@@ -52,6 +52,9 @@ $(document).ready(function(){
 
 		function createUser(name_to_pass, parent_gender_to_pass, child_gender_array, child_age_array, time_to_pass) {
 
+			// add the username to the nav section
+			$('#name-nav').text(name);
+
 			// create a children array to hold each of the child object the for loop below creates
 			var children = [];
 
@@ -86,6 +89,8 @@ $(document).ready(function(){
 
 			// setting the user section in firebase to the user object we create with the form
 			usersRef.ref().set(user);
+
+			$('#user-inputs').addClass('hide');
 			
 		} // end createUser()
 
