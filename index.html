@@ -9,18 +9,22 @@
 		<title>PLYDT</title>
 
 		<!-- Compiled and minified CSS -->
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
 		<!-- My Styles -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	</head>
 <body>
 
-  <!-- Navbar Header With Logo -->
-  <nav class="light-pink lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">PLYDT</a>
-    </div>
-  </nav>
+    <!-- Navbar Header With Logo -->
+    <nav class="light-pink lighten-1" role="navigation">
+    	<div class="nav-wrapper container">
+    		<a id="logo-container" href="#" class="brand-logo">PLYDT</a>
+    		<ul id="nav-mobile" class="right">
+    			<li>Hi, <span id="name-nav"></span></li>
+    		</ul>
+    	</div>
+    </nav>
 
   	<div class="row">
         <div class="col s12">
@@ -33,7 +37,7 @@
     <div class="container">
       <div class="row">
         <div class="col s12">
-          <a class="waves-effect waves-light btn-large" id="pin">Mark yourself available for a PLYDT</a>
+          <a class="waves-effect waves-light btn-large" id="pin">Pin Me</a>
         </div>
       </div>
       <div class="row">
@@ -49,56 +53,53 @@
   <div class="section no-pad-bot">
     <div class="container">
 
-       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-              <label for="first_name">Nickname</label>
-            </div>
-          </div>
-        
-      </div>
+        <div class="row">
+        	<form class="col s12">
+          		<div class="row">
+            		<div class="input-field col s12">
+            		<label for="username">Username</label>
+              		<input placeholder="Jane Doe" id="username" type="text" class="validate">
+            	</div>
+          	</div>
+        </div>
 
       
 
         <!-- Mom or dad dropdown -->
         <label>Are you a mom or Dad?</label>
-        <select class="browser-default">
-          <option value="" disabled selected></option>
-          <option value="1">Mom</option>
-          <option value="2">Dad</option>
+        <select class="browser-default" id="parent-gender">
+          	<option value="" disabled selected></option>
+          	<option value="mom">Mom</option>
+          	<option value="dad">Dad</option>
         </select>
 
         <!-- Children amount dropdown -->
-        <label>How many children do you have?</label>
-        <select class="browser-default">
-          <option value="" disabled selected></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5 or more</option>
+        <label>How many children will be plydting?</label>
+        <select class="browser-default" id="child-count">
+          	<option value="" disabled selected></option>
+          	<option value="1">1</option>
+          	<option value="2">2</option>
+          	<option value="3">3</option>
+          	<option value="4">4</option>
+          	<option value="5">5</option>
         </select>
 
+        <div id="child-inputs"></div>
 
-        <label>How long are you available??</label>
-        <select class="browser-default">
-          <option value="" disabled selected></option>
-          <option value="1">Half our(30 minutes)</option>
-          <option value="2">One hour(60 minutes)</option>
-          <option value="3">An hour and a half(90 minutes)</option>
-          <option value="4">Two hours(120 minutes)(</option>
-          <option value="5">Two hours and a half(150 minutes)</option>
-          <option value="6">Three hours(180 minutes)(</option>
-          <option value="7">Four hours(210 minutes)</option>
-          <option value="8">Five hours(240 minutes)(</option>
+
+        <label>How long will you be plydting?</label>
+        <select class="browser-default" id="time">
+          	<option value="" disabled selected></option>
+          	<option value="30">Half our</option>
+          	<option value="60">One hour</option>
+          	<option value="90">An hour and a half</option>
+          	<option value="120">Two hours</option>
+          	<option value="150">Two hours and a half</option>
+          	<option value="180">Three hours</option>
         </select>
 
         <!-- Submit button -->
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-        </button>
+        <input class="btn waves-effect waves-light" type="submit" id="create-user" name="action">
         </form>
 
     </div> <!-- closes the container -->
@@ -141,11 +142,15 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
 	<!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
-  <!-- Google Maps API link -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHnKANG4KSajtDbIv5xlCRNM_NmI3huW0&callback=initMap"
+  	<!-- Link to Moment.js should go here -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  	<!-- Google Maps API link 
+  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHnKANG4KSajtDbIv5xlCRNM_NmI3huW0&callback=initMap"
     async defer></script>
+    -->
 
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 
