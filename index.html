@@ -22,6 +22,12 @@
     </div>
   </nav>
 
+  	<div class="row">
+        <div class="col s12">
+          <div id="map"></div>
+        </div>
+    </div>
+
   <!-- Div with the initial buttons to be displayed on load -->
   <div class="section no-pad-bot">
     <div class="container">
@@ -39,6 +45,7 @@
   </div>
 
   <!-- Div with the form to be sent to firebase -->
+  <div id="user-inputs" class="hide">
   <div class="section no-pad-bot">
     <div class="container">
 
@@ -50,14 +57,10 @@
               <label for="first_name">Nickname</label>
             </div>
           </div>
-        </form>
+        
       </div>
 
-      <div class="row">
-        <div class="col s12">
-          <div id="map"></div>
-        </div>
-      </div>
+      
 
         <!-- Mom or dad dropdown -->
         <label>Are you a mom or Dad?</label>
@@ -96,9 +99,11 @@
         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button>
+        </form>
 
     </div> <!-- closes the container -->
   </div> <!-- closes the section -->
+  </div>
 
   <!-- Footer with Bio and Some links -->
   <footer class="page-footer light-pink lighten-1">
@@ -143,8 +148,6 @@
     async defer></script>
 
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
-
-	<h1>hello again</h1>
 
 </body>
 </html>

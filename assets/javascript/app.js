@@ -46,20 +46,22 @@ $(document).ready(function(){
 			
 		} // end createUser()
 
-		/*
+		
 		// click events
 
 		// search button click event to bring up search input modal
 		$('#search').on('click', function() {
 
-
+			$('#search-modal').removeClass('hide');
 
 		});
 
 		// pin button click event to bring up pin input modal
 		$('#pin').on('click', function() {
 
-			
+			$('#pin-modal').removeClass('hide');
+
+			$('#time').removeClass('hide');
 
 		});
 
@@ -80,7 +82,7 @@ $(document).ready(function(){
 			return false;
 
 		}); // end create user search click event
-		*/
+		
 
 		createUser();
 
