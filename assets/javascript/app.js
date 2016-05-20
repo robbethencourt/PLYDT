@@ -89,6 +89,8 @@ $(document).ready(function(){
 
 			// setting the user section in firebase to the user object we create with the form
 			usersRef.ref().set(user);
+
+			$('#user-inputs').addClass('hide');
 			
 		} // end createUser()
 
