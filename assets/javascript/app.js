@@ -52,16 +52,24 @@ $(document).ready(function(){
 		// search button click event to bring up search input modal
 		$('#search').on('click', function() {
 
-			$('#search-modal').removeClass('hide');
+			$('#user-inputs').removeClass('hide');
+
+			$(this).addClass('hide');
+
+			$('#pin').addClass('hide');
 
 		});
 
 		// pin button click event to bring up pin input modal
 		$('#pin').on('click', function() {
 
-			$('#pin-modal').removeClass('hide');
+			$('#user-inputs').removeClass('hide');
 
 			$('#time').removeClass('hide');
+
+			$(this).addClass('hide');
+
+			$('#search').addClass('hide');
 
 		});
 
