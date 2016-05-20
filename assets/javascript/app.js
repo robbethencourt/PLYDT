@@ -147,9 +147,13 @@ $(document).ready(function(){
 			}).get();
 
 			// set the amount of time they will be using the app
-			time = $('#time').val();
+			var time_to_add = $('#time').val();
 
-			console.log(time);
+			// create a new date with moments.js
+			var newDate = moment();
+
+			// set the time variable to unix time with the time to add added in that the user selected they will be plydting for
+			time = newDate.add(time_to_add, 'minutes').format('X');
 			
 			// call the createUser function and pass the value of the elements we got on this click event
 			createUser(name, parent_gender, child_gender, child_age, time);
