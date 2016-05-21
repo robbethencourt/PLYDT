@@ -1,0 +1,11 @@
+.light-pink{
+	color: #EE6E73;
+}
+nav .brand-logo {
+    position: absolute;
+    color: #EE6E73;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    white-space: nowrap;
+}

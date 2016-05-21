@@ -17,22 +17,18 @@
 <body>
 
     <!-- Navbar Header With Logo -->
-    <nav class="light-pink lighten-1" role="navigation">
+    <nav class="white" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo left">PLYDT</a>
         <ul id="nav-mobile" class="right">
-          <li>Hi, <span id="name-nav"></span></li>
+          <li class="light-pink" ">Hi, <span id="name-nav"></span></li>
         </ul>
       </div>
     </nav>
 
-    <div class="row">
-        <div class="col s11 offset-s1">
-          <div id="map"></div>
-        </div>
-    </div>
+    <div id="map"></div>
 
-    <!-- comment-display -->
+  <!-- comment-display -->
   <div class="comment-display-container">
       <div class="container">
         <div class="row">
@@ -43,31 +39,19 @@
       </div>
   </div>
 
-  <!-- comment input -->
-  <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <div class="input-group">
-              <input type="text" class="form-control" id="comment-input" placeholder="Leave a comment">
-              <span class="input-group-btn">
-                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Submit comment</button>
-              </span>
-          </div><!-- /input-group -->
-        </div>
-      </div>
-  </div>
-  
   <!-- Div with the initial buttons to be displayed on load -->
-  <div class="section no-pad-bot">
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <a class="waves-effect waves-light btn" id="pin">Pin Me</a>
+  <div id="user-button-options" class="hide">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <a class="waves-effect waves-light btn-large" id="pin">Pin Me</a>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          <a class="waves-effect waves-light btn" id="search">Search for a PLYDT</a>
+        <div class="row">
+          <div class="col s12">
+            <a class="waves-effect waves-light btn-large" id="search">Search for a PLYDT</a>
+          </div>
         </div>
       </div>
     </div>
@@ -131,32 +115,46 @@
   </div> <!-- closes the section -->
   </div>
 
-  <!-- Footer with Bio and Some links -->
-  <footer class="page-footer light-pink lighten-1">
+  <!-- venue modal -->
+  <div id="venue-modal">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-
-          <!-- Bio of what the team or somthing -->
-          <p class="grey-text text-lighten-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="row">
+          <div class="col 12">
+            <h3 id="venue-name">Name of Venue</h3>
+            <h4>There are <span id="num-plydtrs"></span></h4>
+            <div id="plydtrs">
+              <p>Christina Beverly</p>
+              <p>Jane Doe</p>
+              <p>John Doe</p>
+            </div>
+          </div>
         </div>
-        
-        <!-- Some links to each contributer on the team -->
-        <div class="col l6 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
+    
+      <!-- comment-display -->
+      <div class="comment-display-container">
+          <div class="container">
+            <div class="row">
+              <div class="col s12">
+                <div id="comment-display"></div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="#">The PLYDT Team</a>
+  </div>
+
+  <!-- Footer and comment input -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="input-group">
+              <input type="text" class="form-control" id="comment-input" placeholder="Leave a comment">
+              <span class="input-group-btn">
+                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Submit comment</button>
+              </span>
+          </div><!-- /input-group -->
+        </div>
       </div>
     </div>
   </footer>
@@ -175,16 +173,48 @@
 
   <!--Google Maps-->
   <script>
+      var map;
+      var infowindow;
       function initMap() {
-        var mapDiv = document.getElementById('map');
-        var map = new google.maps.Map(mapDiv, {
-          center: {lat: 28.5383, lng: -81.3792},
+        var orlando = {lat: 28.5383, lng: -81.3792};
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: orlando,
           zoom: 13
         });
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: orlando,
+          radius: 500,
+          keyword: ["'kids play areas near me'"]
+        }, callback);
+      }
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+        marker.addListener('click', function() {
+        map.setZoom(1);
+        map.setCenter(marker.getPosition());
+      });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-        async defer></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzM9tljgnEnncAeD4MYu_RuGLGW3G7dyE&libraries=places&callback=initMap" async defer></script>
+
 
   <script type="text/javascript" src="assets/javascript/app.js"></script>
 
