@@ -17,27 +17,16 @@
 <body>
 
     <!-- Navbar Header With Logo -->
-    <nav class="white" role="navigation">
+    <nav class="white lighten-1" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo left">PLYDT</a>
+        <a id="logo-container" href="#" class="brand-logo left"><img src="assets/images/plydt-logo.png" class="plydt-logo" alt="plydt logo" /></a>
         <ul id="nav-mobile" class="right">
-          <li class="light-pink" ">Hi, <span id="name-nav"></span></li>
+          <li class="light-pink">Hi, <span id="name-nav"></span></li>
         </ul>
       </div>
     </nav>
 
     <div id="map"></div>
-
-  <!-- comment-display -->
-  <div class="comment-display-container">
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <div id="comment-display"></div>
-          </div>
-        </div>
-      </div>
-  </div>
 
   <!-- Div with the initial buttons to be displayed on load -->
   <div id="user-button-options" class="hide">
@@ -116,46 +105,45 @@
   </div>
 
   <!-- venue modal -->
-  <div id="venue-modal">
+  <div id="venue-modal" class="hide">
     <div class="container">
         <div class="row">
           <div class="col 12">
-            <h3 id="venue-name">Name of Venue</h3>
-            <h4>There are <span id="num-plydtrs"></span></h4>
-            <div id="plydtrs">
-              <p>Christina Beverly</p>
-              <p>Jane Doe</p>
-              <p>John Doe</p>
-            </div>
+            <h5 id="venue-name">Name of Venue</h5>
+            <h6>There are <span id="num-plydtrs">3</span> plydtrs here</h6>
+            <ul id="plydtrs">
+              <li>Christina Beverly</li>
+              <li>Jane Doe</li>
+              <li>John Doe</li>
+            </ul>
           </div>
         </div>
     
       <!-- comment-display -->
       <div class="comment-display-container">
-          <div class="container">
             <div class="row">
               <div class="col s12">
                 <div id="comment-display"></div>
               </div>
             </div>
+      </div>
+
+     <div class="row">
+          <div class="col s12">
+            <div class="comment-inputs">
+                <input type="text" class="" id="comment-input" placeholder="Leave a comment">
+                <span class="">
+                  <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Comment</button>
+                </span>
+            </div><!-- /input-group -->
           </div>
       </div>
-    </div>
   </div>
 
   <!-- Footer and comment input -->
-  <footer>
+  <footer class="hide">
     <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <div class="input-group">
-              <input type="text" class="form-control" id="comment-input" placeholder="Leave a comment">
-              <span class="input-group-btn">
-                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Submit comment</button>
-              </span>
-          </div><!-- /input-group -->
-        </div>
-      </div>
+     
     </div>
   </footer>
   
@@ -207,8 +195,8 @@
           infowindow.open(map, this);
         });
         marker.addListener('click', function() {
-        map.setZoom(1);
-        map.setCenter(marker.getPosition());
+        $('#venue-modal').removeClass('hide');
+        console.log(this);
       });
       }
     </script>
