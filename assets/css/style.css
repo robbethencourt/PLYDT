@@ -1,0 +1,16 @@
+/* global styles */
+/* why on earth does materialize set selects to display none??? Must be a reason, but I've got no idea */
+select {
+	display: inline;
+}
+
+.hide {
+	display: none;
+}
+
+#map {
+	margin-top: 5%;
+    width: 1000px;
+    height: 400px;
+    background-color: #CCC;
+  }
