@@ -1,14 +1,6 @@
 // Javascript function that wraps everything
 $(document).ready(function(){
 
-	//map
-	function initMap() {
-        var mapDiv = document.getElementById('map');
-        var map = new google.maps.Map(mapDiv, {
-          center: {lat: 44.540, lng: -78.546},
-          zoom: 8
-        });
-      }
 
 	function plydt() {
 
@@ -32,15 +24,50 @@ $(document).ready(function(){
 		// functions
 
 		//map functions
-			function initMap() {
-			    var mapDiv = document.getElementById('map');
-			    var map = new google.maps.Map(mapDiv, {
-			      center: {lat: 44.540, lng: -78.546},
-			      zoom: 8
-			    });
-			  }
 
-			$('#map').append(map);
+			// var map;
+			// var service;
+			// var infowindow;
+
+			// function initialize() {
+			//   var pyrmont = new google.maps.LatLng(-44.540,-78.546);
+
+			//   map = new google.maps.Map(document.getElementById('map'), {
+			//       center: pyrmont,
+			//       zoom: 8
+			//     });
+
+			//   var request = {
+			//     location: pyrmont,
+			//     radius: '50000',
+			//     keyword: 'kids play area near me'
+			//   };
+
+			//   service = new google.maps.places.PlacesService(map);
+			//   service.textSearch(request, callback);
+			// }
+
+			// function callback(results, status) {
+			//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+			//     for (var i = 0; i < results.length; i++) {
+			//       var place = results[i];
+			//       createMarker(results[i]);
+			//     }
+			//   }
+			// }
+			// function createMarker(place) {
+			// 	var placeLoc = place.geometry.location;
+			// 	var marker = new google.maps.Marker({
+			// 	map: map,
+			// 	position: place.geometry.location
+			// 	});
+
+			// 	google.maps.event.addListener(marker, 'click', function() {
+			// 	infowindow.setContent(place.name);
+			// 	infowindow.open(map, this);
+			// 	});
+			// 	}
+			
 		//end map functions
 
 		function addChildDisplays(num_child) {
