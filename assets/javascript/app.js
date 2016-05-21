@@ -1,6 +1,10 @@
 // Javascript function that wraps everything
 $(document).ready(function(){
 
+	// function find location(){
+	// 	//
+	// }
+
 
 	function plydt() {
 
