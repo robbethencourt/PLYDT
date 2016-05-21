@@ -47,7 +47,9 @@ footer {
 #venue-modal {
 	color: #ee6e73;
 }
-
+	.pin-button{
+		margin: 20px 0;
+	}
 	#venue-modal h6 {
 		font-style: italic;
 	}
