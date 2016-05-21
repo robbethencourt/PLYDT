@@ -194,20 +194,13 @@ $(document).ready(function(){
 			// get the comment to send
 			var comment_to_send = $('#comment-input').val().trim();
 
-			// reference the child comments in firebase
-			var comments_ref = dataRef.child('comments');
-
-			// push the comments to firebase with the local name variable assigned
-			comments_ref.push({
-				name: name,
-				comment: comment_to_send
-				
-			}); // end data push
+			$(comment_to_send).append("#comment-display");
 
 			// empty the comment input
 			$('#comment-input').val('');
 
 		}); // end comment button click event
+		
 		/* create user button click event if they are pinning
 		$('#create-user-pin').on('click', function() {
 			console.log(this);
