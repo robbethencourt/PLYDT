@@ -187,6 +187,29 @@
           infowindow.open(map, this);
         });
       }
+
+      navigator.geolocation.getCurrentPosition(exportPosition, errorPosition);
+
+      function errorPosition() {                  
+	    alert('Sorry couldn\'t find your location');                 
+	    //pretext.show();         
+	   }
+
+	   function exportPosition(position) {
+ 
+		    // Get the geolocation properties and set them as variables
+		    latitude = position.coords.latitude;
+		    longitude  = position.coords.longitude;
+		 
+		    
+		    longitudediv.html('Longitude: '+longitude);
+		    lattitudediv.html('Latitude: '+latitude);
+
+		    console.log(longitude, latitude);
+
+
+		     
+		}
     </script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzM9tljgnEnncAeD4MYu_RuGLGW3G7dyE&libraries=places&callback=initMap" async defer></script>
