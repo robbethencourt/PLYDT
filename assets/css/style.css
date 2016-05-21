@@ -39,6 +39,10 @@ footer {
 	height: 60px;
 }
 
+.light-pink {
+	color: #ee6e73;
+}
+
 /* Venue Modal */
 #venue-modal {
 	color: #ee6e73;
