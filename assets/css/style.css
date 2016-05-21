@@ -33,6 +33,46 @@ footer {
   height: 60px;
 }
 
+/* Nav */
+.plydt-logo {
+	width: 100px;
+	height: 60px;
+}
+
+.light-pink {
+	color: #ee6e73;
+}
+
+/* Venue Modal */
+#venue-modal {
+	color: #ee6e73;
+}
+
+	#venue-modal h6 {
+		font-style: italic;
+	}
+
+	#comment-display {
+		height: 150px;
+		color: #fff;
+		background: #ee6e73;
+	}
+
+	.comment-inputs {
+		width: 100%;
+	}
+
+	.comment-inputs input[type="text"] {
+		width: 60%;
+		float: left;
+		color: #fff;
+		background: #FAB6B9;
+	}
+
+	.btn {
+		height: 42px;
+	}
+
 
 	/* comment input */
 	.input-group {
