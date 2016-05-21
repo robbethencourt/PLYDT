@@ -1,6 +1,15 @@
 // Javascript function that wraps everything
 $(document).ready(function(){
 
+	//map
+	function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 44.540, lng: -78.546},
+          zoom: 8
+        });
+      }
+
 	function plydt() {
 
 		// drop the firebase onto the dataRef variable to use throughout my js
@@ -21,6 +30,18 @@ $(document).ready(function(){
 
 
 		// functions
+
+		//map functions
+			function initMap() {
+			    var mapDiv = document.getElementById('map');
+			    var map = new google.maps.Map(mapDiv, {
+			      center: {lat: 44.540, lng: -78.546},
+			      zoom: 8
+			    });
+			  }
+
+			$('#map').append(map);
+		//end map functions
 
 		function addChildDisplays(num_child) {
 			
