@@ -13,3 +13,8 @@ select {
     height: 400px;
     background-color: #CCC;
   }
+
+  #comments-display {
+  	height: 150px;
+  	overflow-y: scroll;
+  }

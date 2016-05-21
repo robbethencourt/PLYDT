@@ -28,30 +28,7 @@
 
     <div id="map"></div>
 
-  <!-- comment-display -->
-  <div class="comment-display-container">
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <div id="comment-display"></div>
-          </div>
-        </div>
-      </div>
-  </div>
-
-  <!-- comment input -->
-  <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <div class="input-group">
-              <input type="text" class="form-control" id="comment-input" placeholder="Leave a comment">
-              <span class="input-group-btn">
-                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Submit comment</button>
-              </span>
-          </div><!-- /input-group -->
-        </div>
-      </div>
-  </div>
+  
 
   <!-- Div with the initial buttons to be displayed on load -->
   <div class="section no-pad-bot">
@@ -125,6 +102,48 @@
 
     </div> <!-- closes the container -->
   </div> <!-- closes the section -->
+  </div>
+
+	<!-- venue modal -->
+	<div id="venue-modal">
+		<div class="container">
+		  	<div class="row">
+		  		<div class="col 12">
+		  			<h3 id="venue-name">Name of Venue</h3>
+		  			<h4>There are <span id="num-plydtrs"></span></h4>
+		  			<div id="plydtrs">
+		  				<p>Christina Beverly</p>
+		  				<p>Jane Doe</p>
+		  				<p>John Doe</p>
+		  			</div>
+		  		</div>
+		  	</div>
+		
+	  	<!-- comment-display -->
+		  <div class="comment-display-container">
+		      <div class="container">
+		        <div class="row">
+		          <div class="col s12">
+		            <div id="comment-display"></div>
+		          </div>
+		        </div>
+		      </div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- comment input -->
+  <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class="input-group">
+              <input type="text" class="form-control" id="comment-input" placeholder="Leave a comment">
+              <span class="input-group-btn">
+                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Submit comment</button>
+              </span>
+          </div><!-- /input-group -->
+        </div>
+      </div>
   </div>
 
   <!-- Footer with Bio and Some links -->
@@ -204,7 +223,14 @@
           infowindow.setContent(place.name);
           infowindow.open(map, this);
         });
+
+        marker.addListener('click', function() {
+	    	map.setZoom(1);
+	    	map.setCenter(marker.getPosition());
+	  	});
       }
+
+    
     </script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzM9tljgnEnncAeD4MYu_RuGLGW3G7dyE&libraries=places&callback=initMap" async defer></script>
