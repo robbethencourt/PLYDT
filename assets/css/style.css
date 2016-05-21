@@ -7,3 +7,10 @@ select {
 .hide {
 	display: none;
 }
+
+#map {
+	margin-top: 5%;
+    width: 1000px;
+    height: 400px;
+    background-color: #CCC;
+  }

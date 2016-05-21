@@ -27,7 +27,7 @@
     </nav>
 
   	<div class="row">
-        <div class="col s12">
+        <div class="col s11 offset-s1">
           <div id="map"></div>
         </div>
     </div>
@@ -148,10 +148,18 @@
   	<!-- Link to Moment.js should go here -->
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-  	<!-- Google Maps API link 
-  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHnKANG4KSajtDbIv5xlCRNM_NmI3huW0&callback=initMap"
-    async defer></script>
-    -->
+	<!--Google Maps-->
+	<script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 28.5383, lng: -81.3792},
+          zoom: 13
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
 
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 
