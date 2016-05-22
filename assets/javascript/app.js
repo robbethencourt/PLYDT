@@ -201,7 +201,12 @@ $(document).ready(function(){
 			// call the createUser function and pass the value of the elements we got on this click event
 			createUser(name, parent_gender, child_gender, child_age, time);
 
+			// hide the pin button
 			$('.pin-button').removeClass('hide');
+
+			// remove the dynamically created select and input for the added children
+			$('.child-gender').remove();
+			$('.child-age').remove();
 
 			return false;
 
@@ -246,13 +251,20 @@ $(document).ready(function(){
 
 		}); // end click event on pin icon
 
+		// click event to remove the user input form by pressing the x at the top right of the screen
 		$('#cancel').on('click', function() {
 			
+			// hide the user inputs div
 			$('#user-inputs').addClass('hide');
 
+			// show the pin button again
 			$('.pin-button').removeClass('hide');
 
-		}); //
+			// remove the dynamically created select and input for the added children
+			$('.child-gender').remove();
+			$('.child-age').remove();
+
+		}); // end cancel on click event
 
 	} // end plydt()
 
