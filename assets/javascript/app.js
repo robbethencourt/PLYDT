@@ -21,58 +21,13 @@ $(document).ready(function(){
 		var chatroom_name = '';
 		var child = {};
 
+		var location_name = '';
+
 		// variable for chatroom comments
 		var comment = '';
 
 
 		// functions
-
-		//map functions
-
-			// var map;
-			// var service;
-			// var infowindow;
-
-			// function initialize() {
-			//   var pyrmont = new google.maps.LatLng(-44.540,-78.546);
-
-			//   map = new google.maps.Map(document.getElementById('map'), {
-			//       center: pyrmont,
-			//       zoom: 8
-			//     });
-
-			//   var request = {
-			//     location: pyrmont,
-			//     radius: '50000',
-			//     keyword: 'kids play area near me'
-			//   };
-
-			//   service = new google.maps.places.PlacesService(map);
-			//   service.textSearch(request, callback);
-			// }
-
-			// function callback(results, status) {
-			//   if (status == google.maps.places.PlacesServiceStatus.OK) {
-			//     for (var i = 0; i < results.length; i++) {
-			//       var place = results[i];
-			//       createMarker(results[i]);
-			//     }
-			//   }
-			// }
-			// function createMarker(place) {
-			// 	var placeLoc = place.geometry.location;
-			// 	var marker = new google.maps.Marker({
-			// 	map: map,
-			// 	position: place.geometry.location
-			// 	});
-
-			// 	google.maps.event.addListener(marker, 'click', function() {
-			// 	infowindow.setContent(place.name);
-			// 	infowindow.open(map, this);
-			// 	});
-			// 	}
-			
-		//end map functions
 
 		function addChildDisplays(num_child) {
 			
@@ -146,6 +101,37 @@ $(document).ready(function(){
 			
 		} // end createUser()
 
+		function grabLocationName() {
+
+			// delay the grabbing the venue location so it has time to set from the map function that appears further below this page
+			setTimeout(function () {
+
+				// set the location_name variable to the text in the venue name we get from when the user clicks the google map icon
+				location_name = $('#venue-name').text();
+
+			}, 500); // end setTimeout()
+
+		} // end grabLocationName()
+
+
+		// firebase events
+
+		// grabbed the comments section of firebase to use below in the section where I'll be adding comments to the screen
+		var commentsRef = new Firebase('https://plydt.firebaseio.com/comments');
+
+		// updating comments to the screen
+		commentsRef.on('child_added', function(childSnapshot, prevChildKey) {
+
+			// grab the objects from firebase
+			var comment_to_add = childSnapshot.val();
+
+			console.log(comment_to_add);
+
+			// add the name of who entered the comment and what their comment is. I'm ussing prepend so that the newst comment is displayed on top
+			$('#comment-display').prepend('<p>' + comment_to_add.name + ': ' + comment_to_add.comment + '</p>');
+
+		}); // dataRef for comments
+
 		
 		// click events
 
@@ -218,6 +204,34 @@ $(document).ready(function(){
 			return false;
 
 		}); // end create user search click event
+
+		// click event for when comments are addded
+		$('#comment-button').on('click', function() {
+
+			// get the comment to send
+			var comment_to_send = $('#comment-input').val().trim();
+
+			// reference the child comments in firebase
+			var comments_ref = dataRef.child('comments/');
+
+			// push the comments to firebase with the local name variable assigned
+			comments_ref.push({
+				name: location_name,
+				comment: comment_to_send
+				
+			}); // end data push
+
+			// empty the comment input
+			$('#comment-input').val('');
+
+		}); // end comment button click event
+
+		// click event to grab the name when the map is clicked
+		$('#map').on('click', function() {
+			
+			grabLocationName();
+
+		})// end map click event
 
 		/* create user button click event if they are pinning
 		$('#create-user-pin').on('click', function() {
@@ -538,3 +552,4 @@ function addMarker(place) {
   	}); // end google maps marker event listner
 
 } // end addMarker()
+
