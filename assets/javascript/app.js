@@ -233,8 +233,128 @@ $(document).ready(function(){
 
 		//createUser();
 
+		
+
 	} // end plydt()
 
 	plydt();
 
 }); // end jQuery document ready
+
+// Google maps functions needs to live outside the jQuery document ready function as it was causing a delay on the initMap() and having it not available when google maps was ready for it
+
+// map variables
+var map;
+var infoWindow;
+var service;
+
+// map functions
+function initMap() {
+
+	// new google map
+	map = new google.maps.Map(document.getElementById('map'), {
+
+		// this is where to store the coordinates
+		center: {lat: 28.744563499999998, lng: -81.30536049999999},
+		// deals wtih the area the map displays
+ 		zoom: 13,
+ 		// map speicific styles
+	    styles: [{
+	      	stylers: [{ visibility: 'simplified' }]
+	    }, {
+	      	elementType: 'labels',
+	      	stylers: [{ visibility: 'off' }]
+	    }]
+
+  	}); // end map
+
+  	infoWindow = new google.maps.InfoWindow();
+  	service = new google.maps.places.PlacesService(map);
+
+  	// The idle event is a debounced event, so we can query & listen without
+  	// throwing too many requests at the server.
+  	map.addListener('idle', performSearch);
+
+} // end initMap()
+
+function performSearch() {
+
+	// request object that takes the keywords for our search
+  	var request = {
+    	bounds: map.getBounds(),
+    	keyword: 'parks'
+  	};
+
+  	// service is using the request and callback functions
+  	service.radarSearch(request, callback);
+
+} // end performSearch()
+
+function callback(results, status) {
+
+	// if there is no google map return an error
+  	if (status !== google.maps.places.PlacesServiceStatus.OK) {
+    	console.error(status);
+    	return;
+  	} // end if
+
+  	// loop through the google map search results and display with markers to the map
+  	for (var i = 0, result; result = results[i]; i++) {
+
+    	addMarker(result);
+
+  	} // end for loop
+
+} // end callback()
+
+function addMarker(place) {
+
+	// variable marker that plots the google places info
+  	var marker = new google.maps.Marker({
+
+    	map: map,
+    	position: place.geometry.location,
+    	icon: {
+    		// this is where we change the icon image to display on the map
+      		url: 'http://maps.gstatic.com/mapfiles/circle.png',
+      		anchor: new google.maps.Point(10, 10),
+      		scaledSize: new google.maps.Size(10, 17)
+    	} // end icon
+
+  	}); // end marker
+
+  	// event listener on the markers so we can pull info once a user clicks on it
+  	marker.addListener('click', function() {
+
+  		// removing the hide class from venue-modal so the details of that location are visible
+    	//$('#venue-modal').removeClass('hide');
+
+    	// this keyword gives us the google places object that we'll need to pull data from
+    	//console.log(this);
+  	
+  	}); // end marker event listner
+
+	// google maps event listner that brings up the google maps info as a pop-up on the map when icon is clicked
+  	google.maps.event.addListener(marker, 'click', function() {
+
+    	service.getDetails(place, function(result, status) {
+
+    		// check to make sure there is a google maps places and return errors if not
+      		if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        		console.error(status);
+        		return;
+    		} // end if
+
+    		// the details that are being passed to the pop-up on google maps
+      		infoWindow.setContent(result.name);
+      		infoWindow.open(map, marker);
+    	
+    	}); // end service
+
+    	$('#venue-modal').removeClass('hide');
+
+    	console.log(this);
+  	
+  	}); // end google maps marker event listner
+
+} // end addMarker()
