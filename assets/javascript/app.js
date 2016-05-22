@@ -212,11 +212,11 @@ $(document).ready(function(){
 			var comment_to_send = $('#comment-input').val().trim();
 
 			// reference the child comments in firebase
-			var comments_ref = dataRef.child('comments/' + location_name);
+			var comments_ref = dataRef.child('comments/');
 
 			// push the comments to firebase with the local name variable assigned
 			comments_ref.push({
-				name: name,
+				name: location_name,
 				comment: comment_to_send
 				
 			}); // end data push
