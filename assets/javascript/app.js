@@ -84,7 +84,7 @@ $(document).ready(function(){
 				username: name_to_pass,
 				parent_gender: parent_gender_to_pass,
 				children: children,
-				location: coordinates,
+				location: location_name,
 				time: time_to_pass,
 				chatrooms: [{
 					chatroom: chatroom_name
@@ -201,6 +201,8 @@ $(document).ready(function(){
 			// call the createUser function and pass the value of the elements we got on this click event
 			createUser(name, parent_gender, child_gender, child_age, time);
 
+			$('.pin-button').removeClass('hide');
+
 			return false;
 
 		}); // end create user search click event
@@ -238,25 +240,11 @@ $(document).ready(function(){
 			
 			$('#user-inputs').removeClass('hide');
 
-			$(this).addClass('hide');
+			$('.pin-button').addClass('hide');
 
 			$('#location-pin').text(location_name);
 
 		}); // end click event on pin icon
-
-		/* create user button click event if they are pinning
-		$('#create-user-pin').on('click', function() {
-
-			console.log(this);
-			
-			createUser();
-
-			return false;
-
-		}); // end create user search click event
-		*/
-
-		//createUser();
 
 	} // end plydt()
 

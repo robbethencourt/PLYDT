@@ -13,6 +13,10 @@ select:focus {
 	border: none;
 }
 
+input[type="text"]:valid {
+	box-shadow: 0 1px 0 0 #26a69a;
+}
+
 .hide {
 	display: none;
 }
