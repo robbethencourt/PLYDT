@@ -67,11 +67,33 @@ footer {
 	.comment-inputs input[type="text"] {
 		width: 60%;
 		float: left;
+		padding-left: .5em;
+		border: none;
 		color: #fff;
 		background: #FAB6B9;
 	}
 
-	.btn {
+	.comment-inputs input[type="text"]:focus {
+		border: none;
+		box-shadow: none;
+		background: #FC9FA3;
+	}
+
+	/* placeholder text styles */
+	::-webkit-input-placeholder, .comment-inputs::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: #ee6e73;
+	}
+	::-moz-placeholder, .comment-inputs::-moz-input-placeholder { /* Firefox 19+ */
+	  color: #ee6e73;
+	}
+	:-ms-input-placeholder, .comment-inputs::-ms-input-placeholder { /* IE 10+ */
+	  color: #ee6e73;
+	}
+	:-moz-placeholder, .comment-inputs:-moz-input-placeholder { /* Firefox 18- */
+	  color: #ee6e73;
+	}
+
+	.comment-inputs .btn {
 		height: 42px;
 	}
 
@@ -80,18 +102,3 @@ footer {
 	.input-group {
 		padding-top: 12px;
 	}
-
-		.footer input[type="text"] {
-			margin-right: -3px;
-			padding: .5em 1em;
-			border: none;
-			border-radius: 0;
-			color: #999;
-			background: #222;
-		}
-
-		.footer input[type="text"]:focus, .footer input[type="text"]:active {
-			outline: none;
-			box-shadow: none;
-			background: #1f1f1f;
-		}
