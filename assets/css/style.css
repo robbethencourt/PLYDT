@@ -56,9 +56,14 @@ footer {
 
 	#comment-display {
 		height: 150px;
+		padding: 1px 1em;
 		color: #fff;
 		background: #ee6e73;
 	}
+
+		#comment-display p {
+			margin-bottom: -15px;
+		}
 
 	.comment-inputs {
 		width: 100%;
