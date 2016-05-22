@@ -246,6 +246,14 @@ $(document).ready(function(){
 
 		}); // end click event on pin icon
 
+		$('#cancel').on('click', function() {
+			
+			$('#user-inputs').addClass('hide');
+
+			$('.pin-button').removeClass('hide');
+
+		}); //
+
 	} // end plydt()
 
 	plydt();
