@@ -2,6 +2,15 @@
 /* why on earth does materialize set selects to display none??? Must be a reason, but I've got no idea */
 select {
 	display: inline;
+	margin-bottom: 10px;
+	border-radius: 0;
+	border: none;
+	background: #FAB6B9;
+}
+
+select:focus {
+	outline: none;
+	border: none;
 }
 
 .hide {
@@ -33,6 +42,7 @@ footer {
   height: 60px;
 }
 
+
 /* Nav */
 .plydt-logo {
 	width: 100px;
@@ -43,6 +53,38 @@ footer {
 	color: #ee6e73;
 }
 
+
+/* user inputs */
+#user-inputs {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #ee6e73;
+}
+
+	.input-field label, label {
+		padding-bottom: 5px;
+		color: #fff;
+	}
+
+	#user-inputs input[type="text"], #user-inputs input[type="number"] {
+		padding-left: .5em;
+		border: none;
+		background: #FAB6B9;
+	}
+
+	.button-space {
+		margin-top: 20px;
+	}
+
+	#location-pin {
+		font-family: 'Lobster', cursive;
+		color: #fff;
+	}
+
+
 /* Venue Modal */
 #venue-modal {
 	color: #ee6e73;
@@ -50,8 +92,8 @@ footer {
 	.pin-button{
 		margin: 20px 0;
 	}
-	#venue-modal h6 {
-		font-style: italic;
+	#venue-modal h5 {
+		font-family: 'Lobster', cursive;
 	}
 
 	#comment-display {

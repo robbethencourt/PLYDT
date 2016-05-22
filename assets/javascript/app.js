@@ -233,6 +233,17 @@ $(document).ready(function(){
 
 		})// end map click event
 
+		// click event to pull up the user form when the pin icon is pressed
+		$('#pb').on('click', function() {
+			
+			$('#user-inputs').removeClass('hide');
+
+			$(this).addClass('hide');
+
+			$('#location-pin').text(location_name);
+
+		}); // end click event on pin icon
+
 		/* create user button click event if they are pinning
 		$('#create-user-pin').on('click', function() {
 
