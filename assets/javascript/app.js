@@ -257,12 +257,203 @@ function initMap() {
 		// deals wtih the area the map displays
  		zoom: 13,
  		// map speicific styles
-	    styles: [{
-	      	stylers: [{ visibility: 'simplified' }]
-	    }, {
-	      	elementType: 'labels',
-	      	stylers: [{ visibility: 'off' }]
-	    }]
+	    styles: [
+		    {
+		        "featureType": "all",
+		        "elementType": "geometry",
+		        "stylers": [
+		            {
+		                "color": "#FFB5B8"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "all",
+		        "elementType": "labels.text",
+		        "stylers": [
+		            {
+		                "color": "#ee6e73"
+		            },
+		            {
+		                "visibility": "simplified"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "landscape",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "lightness": "100"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi",
+		        "elementType": "all",
+		        "stylers": [
+		            {
+		                "lightness": "86"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi",
+		        "elementType": "labels.text",
+		        "stylers": [
+		            {
+		                "lightness": "-60"
+		            },
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi",
+		        "elementType": "labels.text.stroke",
+		        "stylers": [
+		            {
+		                "lightness": "89"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi",
+		        "elementType": "labels.icon",
+		        "stylers": [
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi.park",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "color": "#C9FFD8"
+		            },
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road",
+		        "elementType": "labels.icon",
+		        "stylers": [
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.highway",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "lightness": "46"
+		            },
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.highway.controlled_access",
+		        "elementType": "labels",
+		        "stylers": [
+		            {
+		                "visibility": "simplified"
+		            },
+		            {
+		                "hue": "#ee6e73"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.arterial",
+		        "elementType": "all",
+		        "stylers": [
+		            {
+		                "visibility": "simplified"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.arterial",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "lightness": "81"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.local",
+		        "elementType": "all",
+		        "stylers": [
+		            {
+		                "visibility": "simplified"
+		            },
+		            {
+		                "lightness": "49"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.local",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "lightness": "75"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.local",
+		        "elementType": "geometry.stroke",
+		        "stylers": [
+		            {
+		                "lightness": "-46"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "transit",
+		        "elementType": "all",
+		        "stylers": [
+		            {
+		                "visibility": "simplified"
+		            },
+		            {
+		                "lightness": "51"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "transit",
+		        "elementType": "labels",
+		        "stylers": [
+		            {
+		                "hue": "#ee6e73"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "water",
+		        "elementType": "all",
+		        "stylers": [
+		            {
+		                "color": "#DBE9FF"
+		            },
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    }
+		] // end map styles
 
   	}); // end map
 
