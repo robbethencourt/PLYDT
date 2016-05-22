@@ -233,8 +233,6 @@ $(document).ready(function(){
 
 		//createUser();
 
-		
-
 	} // end plydt()
 
 	plydt();
@@ -323,17 +321,6 @@ function addMarker(place) {
 
   	}); // end marker
 
-  	// event listener on the markers so we can pull info once a user clicks on it
-  	marker.addListener('click', function() {
-
-  		// removing the hide class from venue-modal so the details of that location are visible
-    	//$('#venue-modal').removeClass('hide');
-
-    	// this keyword gives us the google places object that we'll need to pull data from
-    	//console.log(this);
-  	
-  	}); // end marker event listner
-
 	// google maps event listner that brings up the google maps info as a pop-up on the map when icon is clicked
   	google.maps.event.addListener(marker, 'click', function() {
 
@@ -348,12 +335,14 @@ function addMarker(place) {
     		// the details that are being passed to the pop-up on google maps
       		infoWindow.setContent(result.name);
       		infoWindow.open(map, marker);
+
+      		// The location name is added to the venue-modal where the name of the location is prominently displayed
+    		$('#venue-name').text(result.name);
     	
     	}); // end service
 
+    	// reveal our venue modal to show comments and details of that location in firebase
     	$('#venue-modal').removeClass('hide');
-
-    	console.log(this);
   	
   	}); // end google maps marker event listner
 
