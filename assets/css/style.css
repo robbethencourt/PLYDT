@@ -84,8 +84,19 @@ footer {
 	}
 
 	#location-pin {
+		padding-top: 20px;
 		font-family: 'Lobster', cursive;
 		color: #fff;
+	}
+
+	#cancel {
+		position: absolute;
+		top: -25px;
+		right: 20px;
+		color: #FAB6B9;
+		font-size: 2em;
+		font-family: 'Lobster', cursive;
+		cursor: pointer;
 	}
 
 
@@ -116,7 +127,7 @@ footer {
 	}
 
 	.comment-inputs input[type="text"] {
-		width: 60%;
+		width: 55%;
 		float: left;
 		padding-left: .5em;
 		border: none;
