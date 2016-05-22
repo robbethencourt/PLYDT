@@ -11,6 +11,9 @@
     <!-- Compiled and minified CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
+      <!-- Google Fonts - Lobster -->
+      <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
     <!-- My Styles -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -55,53 +58,51 @@
   <div class="section no-pad-bot">
     <div class="container">
 
-        <div class="row">
-          <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                <label for="username">Username</label>
-                  <input placeholder="Jane Doe" id="username" type="text" class="validate">
-              </div>
-            </div>
-        </div>
+    	<h4 id="location-pin"></h4>
 
+        <form>
+        	<!-- username input -->
+            <label for="username">Username</label>
+            <input placeholder="Jane Doe" id="username" type="text" class="validate">
       
 
-        <!-- Mom or dad dropdown -->
-        <label>Are you a mom or Dad?</label>
-        <select class="browser-default" id="parent-gender">
-            <option value="" disabled selected></option>
-            <option value="mom">Mom</option>
-            <option value="dad">Dad</option>
-        </select>
+	        <!-- Mom or dad dropdown -->
+	        <label>Mom or Dad?</label>
+	        <select class="browser-default" id="parent-gender">
+	            <option value="" disabled selected></option>
+	            <option value="mom">Mom</option>
+	            <option value="dad">Dad</option>
+	        </select>
 
-        <!-- Children amount dropdown -->
-        <label>How many children will be plydting?</label>
-        <select class="browser-default" id="child-count">
-            <option value="" disabled selected></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+	        <!-- Children amount dropdown -->
+	        <label>How many children will be plydting?</label>
+	        <select class="browser-default" id="child-count">
+	            <option value="" disabled selected></option>
+	            <option value="1">1</option>
+	            <option value="2">2</option>
+	            <option value="3">3</option>
+	            <option value="4">4</option>
+	            <option value="5">5</option>
+	        </select>
 
-        <div id="child-inputs"></div>
+	        <div id="child-inputs"></div>
 
 
-        <label>How long will you be plydting?</label>
-        <select class="browser-default" id="time">
-            <option value="" disabled selected></option>
-            <option value="30">Half our</option>
-            <option value="60">One hour</option>
-            <option value="90">An hour and a half</option>
-            <option value="120">Two hours</option>
-            <option value="150">Two hours and a half</option>
-            <option value="180">Three hours</option>
-        </select>
+	        <label>How long will you be plydting?</label>
+	        <select class="browser-default" id="time">
+	            <option value="" disabled selected></option>
+	            <option value="30">Half our</option>
+	            <option value="60">One hour</option>
+	            <option value="90">An hour and a half</option>
+	            <option value="120">Two hours</option>
+	            <option value="150">Two hours and a half</option>
+	            <option value="180">Three hours</option>
+	        </select>
 
-        <!-- Submit button -->
-        <input class="btn waves-effect waves-light" type="submit" id="create-user" name="action">
+			<div class="button-space">
+				<!-- Submit button -->
+        		<input class="btn waves-effect waves-light" type="submit" id="create-user" name="action">
+			</div>
         </form>
 
     </div> <!-- closes the container -->
