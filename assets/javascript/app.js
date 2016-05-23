@@ -490,6 +490,16 @@ function initMap() {
 
   	}); // end map
 
+	var layer = new google.maps.FusionTablesLayer({
+      query: {
+      select: '\'Geocodable address\'',
+      from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM'
+             }
+  	});
+
+  	layer.setMap(map);
+
+
   	infoWindow = new google.maps.InfoWindow();
   	service = new google.maps.places.PlacesService(map);
 
@@ -504,7 +514,7 @@ function performSearch() {
 	// request object that takes the keywords for our search
   	var request = {
     	bounds: map.getBounds(),
-    	keyword: 'parks'
+    	keyword: 'playgrounds'
   	};
 
   	// service is using the request and callback functions
