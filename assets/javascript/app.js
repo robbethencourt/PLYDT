@@ -101,37 +101,6 @@ $(document).ready(function(){
 			
 		} // end createUser()
 
-		function grabLocationName() {
-
-			// delay the grabbing the venue location so it has time to set from the map function that appears further below this page
-			setTimeout(function () {
-
-				// set the location_name variable to the text in the venue name we get from when the user clicks the google map icon
-				location_name = $('#venue-name').text();
-
-			}, 500); // end setTimeout()
-
-		} // end grabLocationName()
-
-
-		// firebase events
-
-		// grabbed the comments section of firebase to use below in the section where I'll be adding comments to the screen
-		var commentsRef = new Firebase('https://plydt.firebaseio.com/comments');
-
-		// updating comments to the screen
-		commentsRef.on('child_added', function(childSnapshot, prevChildKey) {
-
-			// grab the objects from firebase
-			var comment_to_add = childSnapshot.val();
-
-			console.log(comment_to_add);
-
-			// add the name of who entered the comment and what their comment is. I'm ussing prepend so that the newst comment is displayed on top
-			$('#comment-display').prepend('<p>' + comment_to_add.name + ': ' + comment_to_add.comment + '</p>');
-
-		}); // dataRef for comments
-
 		
 		// click events
 
@@ -219,11 +188,11 @@ $(document).ready(function(){
 			var comment_to_send = $('#comment-input').val().trim();
 
 			// reference the child comments in firebase
-			var comments_ref = dataRef.child('comments/');
+			var comments_ref = dataRef.child('comments/' + location_name);
 
 			// push the comments to firebase with the local name variable assigned
 			comments_ref.push({
-				name: location_name,
+				name: name,
 				comment: comment_to_send
 				
 			}); // end data push
@@ -232,13 +201,6 @@ $(document).ready(function(){
 			$('#comment-input').val('');
 
 		}); // end comment button click event
-
-		// click event to grab the name when the map is clicked
-		$('#map').on('click', function() {
-			
-			grabLocationName();
-
-		})// end map click event
 
 		// click event to pull up the user form when the pin icon is pressed
 		$('#pb').on('click', function() {
@@ -271,6 +233,29 @@ $(document).ready(function(){
 	plydt();
 
 }); // end jQuery document ready
+
+// firebase events
+
+function fbLocationComments(location_to_pass) {
+
+	// first we empty out the div so only the comments for that location are displayed
+	$('#comment-display').empty();
+	
+	// grabbed the comments section of firebase to use below in the section where I'll be adding comments to the screen
+	var commentsRef = new Firebase('https://plydt.firebaseio.com/comments');
+
+	// updating comments to the screen
+	commentsRef.child(location_to_pass).on('child_added', function(childSnapshot, prevChildKey) {
+
+		// grab the objects from firebase
+		var comment_to_add = childSnapshot.val();
+
+		// add the name of who entered the comment and what their comment is. I'm ussing prepend so that the newst comment is displayed on top
+		$('#comment-display').prepend('<p>' + comment_to_add.name + ': ' + comment_to_add.comment + '</p>');
+
+	}); // dataRef for comments
+
+} // end fbLocationComments()
 
 // Google maps functions needs to live outside the jQuery document ready function as it was causing a delay on the initMap() and having it not available when google maps was ready for it
 
@@ -562,6 +547,11 @@ function addMarker(place) {
 
       		// The location name is added to the venue-modal where the name of the location is prominently displayed
     		$('#venue-name').text(result.name);
+    		// set the location_name variable
+    		location_name = result.name;
+
+    		// call the fbLocationComments function so that comments for that location are pulled
+    		fbLocationComments(location_name);
     	
     	}); // end service
 
