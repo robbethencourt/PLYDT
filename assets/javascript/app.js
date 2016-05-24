@@ -1,3 +1,5 @@
+var location_name = '';
+
 // Javascript function that wraps everything
 $(document).ready(function(){
 
@@ -20,8 +22,6 @@ $(document).ready(function(){
 		var timestamp = null;
 		var chatroom_name = '';
 		var child = {};
-
-		var location_name = '';
 
 		// variable for chatroom comments
 		var comment = '';
