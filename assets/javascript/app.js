@@ -1,3 +1,5 @@
+var location_name = '';
+
 // Javascript function that wraps everything
 $(document).ready(function(){
 
@@ -20,8 +22,6 @@ $(document).ready(function(){
 		var timestamp = null;
 		var chatroom_name = '';
 		var child = {};
-
-		var location_name = '';
 
 		// variable for chatroom comments
 		var comment = '';
@@ -228,6 +228,14 @@ $(document).ready(function(){
 
 		}); // end cancel on click event
 
+		// click event for each parent listed for that location
+		$('#plydtrs').on('click', '.parent-link', function () {
+
+			// toggle only the specific dynamic ul element with the hide class
+			$(this).children('.dynamic-ul').toggleClass('hide');
+
+		}); // end click event on the parent link
+
 	} // end plydt()
 
 	plydt();
@@ -253,9 +261,99 @@ function fbLocationComments(location_to_pass) {
 		// add the name of who entered the comment and what their comment is. I'm ussing prepend so that the newst comment is displayed on top
 		$('#comment-display').prepend('<p>' + comment_to_add.name + ': ' + comment_to_add.comment + '</p>');
 
-	}); // dataRef for comments
+	}); // dataRef for getting comments from firebase
 
 } // end fbLocationComments()
+
+function fbPlydtrs(location_to_pass) {
+
+	// empty the plydtrs ul
+	$('#plydtrs').empty();
+
+	// grab the users section of firebase
+	var usersRef = new Firebase('https://plydt.firebaseio.com/users');
+
+	// updating comments to the screen
+	usersRef.orderByChild('location').on('child_added', function(childSnapshot, prevChildKey) {
+
+		// grab the objects from firebase
+		var users_to_add = childSnapshot.val();
+
+		// if the users' location equals the location name variable
+		if (users_to_add.location === location_name) {
+
+			// crate an li element
+			var parent_li = $('<li>').addClass('parent-link');
+
+			// the unix time stored in firebase
+			var time_remaining = users_to_add.time;
+
+			// insert the name of the user to the created li element
+			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
+
+			// create a children ul that will be nested under the parent li element
+			var children_ul = $('<ul>').addClass('dynamic-ul hide');
+
+			// loop through the users' children
+			for (var i = 0; i < users_to_add.children.length; i++) {
+
+				// create a li element for each child of the user
+				var child_li = $('<li>');
+
+				// set the text of that li elemenmt to the gender and age of the users' child
+				child_li.text(users_to_add.children[i].child_gender + ' age ' + users_to_add.children[i].child_age);
+
+				// append the li element to the children ul that's nested under the parent li element
+				children_ul.append(child_li);
+			
+			} // end for looop
+
+			// append the children ul element to that particular parent
+			parent_li.append(children_ul);
+
+			// append the created li element to the ul
+			$('#plydtrs').append(parent_li);
+
+		} // end if
+
+	}); // end userRef for getting user data from firebase
+
+	// setTimeout function so the other scripts have time to get the users in, particularly on that first click
+	setTimeout(function () {
+
+		// get the amount of plydtrs at this location and store in variable
+		var plydtrs_length = $('#plydtrs li').length;
+
+		// get the element we will set this text to
+		var num_plydtrs = $('#num-plydtrs');
+
+		// if there are no plydtrs at this location
+		if (plydtrs_length === 0) {
+
+			// display the below text to the screen
+			num_plydtrs.text('Sorry, no plydtrs at this location, but you can pin and be one for others to find');
+
+		} // end if
+
+		// if there is one other plydtrs at this location
+		if (plydtrs_length === 1) {
+
+			// display the below text to the screen
+			num_plydtrs.text('Hooray, there is ' + plydtrs_length + ' other plydtr here');
+
+		} // end if
+
+		// if there is more than one plydtr at this location
+		if (plydtrs_length > 1) {
+
+			// display the below text to the screen
+			num_plydtrs.text('Hooray, there are ' + plydtrs_length + ' other plydtrs here');
+
+		} // end if
+	
+	}, 100); // end setTimeout
+	
+} // end fbPlydtrs()
 
 // Google maps functions needs to live outside the jQuery document ready function as it was causing a delay on the initMap() and having it not available when google maps was ready for it
 
@@ -562,6 +660,9 @@ function addMarker(place) {
 
     		// call the fbLocationComments function so that comments for that location are pulled
     		fbLocationComments(location_name);
+
+    		// call the fbPlydtrs function so that only the plydtrs for that location show up
+    		fbPlydtrs(location_name);
     	
     	}); // end service
 
@@ -571,4 +672,3 @@ function addMarker(place) {
   	}); // end google maps marker event listner
 
 } // end addMarker()
-
