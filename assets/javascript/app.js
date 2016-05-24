@@ -704,6 +704,9 @@ function addMarker(place) {
 
     		// call the fbPlydtrs function so that only the plydtrs for that location show up
     		fbPlydtrs(location_name);
+
+    		//hiding the welcome screen text
+    		$(".introduction").addClass("hide");
     	
     	}); // end service
 

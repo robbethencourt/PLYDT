@@ -180,15 +180,18 @@ footer {
 }
 
 #copywritediv{
-	text-align: center;
+	text-align: left;
 	color: white;
-	font-size: 18px;
 }
 #footerimg{
-	padding-top: 15px;
+	padding: 0px;
 }
 
 /* introduction screen */
 .introduction{
 	background-color: #EE6E73;
+	text-align: center;
+}
+.introduction h4{
+	font-family: 'Lobster', cursive;
 }
