@@ -253,7 +253,7 @@ function fbLocationComments(location_to_pass) {
 		// add the name of who entered the comment and what their comment is. I'm ussing prepend so that the newst comment is displayed on top
 		$('#comment-display').prepend('<p>' + comment_to_add.name + ': ' + comment_to_add.comment + '</p>');
 
-	}); // dataRef for comments
+	}); // dataRef for getting comments from firebase
 
 } // end fbLocationComments()
 
@@ -262,6 +262,7 @@ function fbPlydtrs(location_to_pass) {
 	// empty the plydtrs ul
 	$('#plydtrs').empty();
 
+	// grab the users section of firebase
 	var usersRef = new Firebase('https://plydt.firebaseio.com/users');
 
 	// updating comments to the screen
@@ -270,14 +271,21 @@ function fbPlydtrs(location_to_pass) {
 		// grab the objects from firebase
 		var users_to_add = childSnapshot.val();
 
+		// if the users' location equals the location name variable
 		if (users_to_add.location === location_name) {
 
-			console.log(childSnapshot.key());
-		}
+			// crate an li element
+			var li_created = $('<li>');
 
-		console.log(users_to_add);
+			// insert the name of the user to the created li element
+			li_created.text(childSnapshot.key());
 
-	});
+			// append the created li element to the ul
+			$('#plydtrs').append(li_created);
+
+		} // end if
+
+	}); // end userRef for getting user data from firebase
 	
 } // end fbPlydtrs()
 
