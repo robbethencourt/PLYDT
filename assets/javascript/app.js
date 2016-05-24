@@ -228,16 +228,13 @@ $(document).ready(function(){
 
 		}); // end cancel on click event
 
-		// click event for each button with .animal class
-		$('#animal-list').on('click', '.animal', function () {
+		// click event for each parent listed for that location
+		$('#plydtrs').on('click', '.parent-link', function () {
 
-			// grab the data name of the button clicked so we know what animal to query when we pass that to the queryAnimals() function
-			var animal_data_name = $(this).data('name');
-			
-			// call the queryAnimals function wiht the name fo the animal to pass
-			queryAnimals(animal_data_name);
+			// toggle only the specific dynamic ul element with the hide class
+			$(this).children('.dynamic-ul').toggleClass('hide');
 
-		}); // end click event on the animal name buttons
+		}); // end click event on the parent link
 
 	} // end plydt()
 
@@ -286,31 +283,36 @@ function fbPlydtrs(location_to_pass) {
 		if (users_to_add.location === location_name) {
 
 			// crate an li element
-			var li_created = $('<li>');
+			var parent_li = $('<li>').addClass('parent-link');
 
 			// the unix time stored in firebase
 			var time_remaining = users_to_add.time;
 
 			// insert the name of the user to the created li element
-			li_created.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
+			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
 
+			// create a children ul that will be nested under the parent li element
 			var children_ul = $('<ul>').addClass('dynamic-ul hide');
 
+			// loop through the users' children
 			for (var i = 0; i < users_to_add.children.length; i++) {
 
+				// create a li element for each child of the user
 				var child_li = $('<li>');
 
+				// set the text of that li elemenmt to the gender and age of the users' child
 				child_li.text(users_to_add.children[i].child_gender + ' age ' + users_to_add.children[i].child_age);
 
+				// append the li element to the children ul that's nested under the parent li element
 				children_ul.append(child_li);
+			
+			} // end for looop
 
-				console.log(users_to_add.children[i].child_gender, users_to_add.children[i].child_age);
-			}
-
-			li_created.append(children_ul);
+			// append the children ul element to that particular parent
+			parent_li.append(children_ul);
 
 			// append the created li element to the ul
-			$('#plydtrs').append(li_created);
+			$('#plydtrs').append(parent_li);
 
 		} // end if
 
@@ -670,4 +672,3 @@ function addMarker(place) {
   	}); // end google maps marker event listner
 
 } // end addMarker()
-
