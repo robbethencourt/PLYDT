@@ -277,8 +277,12 @@ function fbPlydtrs(location_to_pass) {
 			// crate an li element
 			var li_created = $('<li>');
 
+			var time_remaining = users_to_add.time;
+
+			console.log(time_remaining);
+
 			// insert the name of the user to the created li element
-			li_created.text(childSnapshot.key());
+			li_created.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
 
 			// append the created li element to the ul
 			$('#plydtrs').append(li_created);

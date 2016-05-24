@@ -21,6 +21,15 @@ input[type="text"]:valid {
 	display: none;
 }
 
+.bold {
+	font-weight: bold;
+}
+
+.fake-link {
+	cursor: pointer;
+	color: #26a69a;
+}
+
 #map {
     width: 100%;
     height: 400px;
