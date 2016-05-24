@@ -101,6 +101,47 @@ $(document).ready(function(){
 			
 		} // end createUser()
 
+
+		// firebase events
+
+		// remove user data at certain time
+		// grab the users section of firebase
+		var usersDeleteRef = new Firebase('https://plydt.firebaseio.com/users');
+
+		// updating the user info based on the time stored for each user
+		usersDeleteRef.orderByChild('time').on('child_added', function(childSnapshot, prevChildKey) {
+
+			// grab the objects from firebase
+			var users_to_remove = childSnapshot.val();
+
+			// create a new date with moments.js
+			var newRemoveDate = moment();
+
+			// set the time variable to unix time with the time to add added in that the user selected they will be plydting for
+			var timeRemove = newRemoveDate.format('X');
+
+			// if the time stored in firebase for each user is earlier than the current time
+			if (timeRemove > users_to_remove.time) {
+
+				// grab the name of each user
+				var name_to_remove_from = childSnapshot.key();
+
+				// target the specific user by name
+				var object_to_change = usersDeleteRef.child(name_to_remove_from);
+
+				// update the location, time and children values
+				object_to_change.update({
+
+					location: '',
+					time: '',
+					children: ''
+				
+				}); // end updated object
+
+			} // end if
+
+		}); // end usersRef
+
 		
 		// click events
 
