@@ -337,7 +337,7 @@ function fbPlydtrs(location_to_pass) {
 				console.log("minutes: " + answer1);
 
 			// insert the name of the user to the created li element
-			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
+			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining');
 
 			// create a children ul that will be nested under the parent li element
 			var children_ul = $('<ul>').addClass('dynamic-ul hide');
