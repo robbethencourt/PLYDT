@@ -120,6 +120,10 @@ footer {
 		font-family: 'Lobster', cursive;
 	}
 
+	.dynamic-ul {
+		padding: 0 0 15px 10px;
+	}
+
 	#comment-display {
 		height: 150px;
 		padding: 1px 1em;

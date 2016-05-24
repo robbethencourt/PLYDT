@@ -228,6 +228,17 @@ $(document).ready(function(){
 
 		}); // end cancel on click event
 
+		// click event for each button with .animal class
+		$('#animal-list').on('click', '.animal', function () {
+
+			// grab the data name of the button clicked so we know what animal to query when we pass that to the queryAnimals() function
+			var animal_data_name = $(this).data('name');
+			
+			// call the queryAnimals function wiht the name fo the animal to pass
+			queryAnimals(animal_data_name);
+
+		}); // end click event on the animal name buttons
+
 	} // end plydt()
 
 	plydt();
@@ -277,12 +288,26 @@ function fbPlydtrs(location_to_pass) {
 			// crate an li element
 			var li_created = $('<li>');
 
+			// the unix time stored in firebase
 			var time_remaining = users_to_add.time;
-
-			console.log(time_remaining);
 
 			// insert the name of the user to the created li element
 			li_created.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
+
+			var children_ul = $('<ul>').addClass('dynamic-ul hide');
+
+			for (var i = 0; i < users_to_add.children.length; i++) {
+
+				var child_li = $('<li>');
+
+				child_li.text(users_to_add.children[i].child_gender + ' age ' + users_to_add.children[i].child_age);
+
+				children_ul.append(child_li);
+
+				console.log(users_to_add.children[i].child_gender, users_to_add.children[i].child_age);
+			}
+
+			li_created.append(children_ul);
 
 			// append the created li element to the ul
 			$('#plydtrs').append(li_created);
