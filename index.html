@@ -34,6 +34,17 @@
 
     <div id="map"></div>
 
+    <!-- Card panel with information for new users -->
+    <div class="introduction">
+      <div class="row">
+        <div class="col s12">
+          <div class="container">
+            <p class="white-text">Hello and welcome to the PLYDT app! With this app you will be able to connect your child with other children within the same age group in safe locations! To get started, try clicking on a location. It will display the amount of PLYDTers at that location as well as giving you an option to pin yourself.
+            </p>
+          </div>
+        </div>
+      </div>
+    <div>
 
   <!-- Div with the initial buttons to be displayed on load -->
   <div id="user-button-options" class="hide">
@@ -125,32 +136,37 @@
 		  		</div>
 		  	</div>
 		
-	  	<!-- comment-display -->
-		<div class="comment-display-container">
-		    <div class="row">
-		        <div class="col s12">
-		            <div id="comment-display"></div>
-		        </div>
-		    </div>
-		</div>
+  	  	<!-- comment-display -->
+  		<div class="comment-display-container">
+  		    <div class="row">
+  		        <div class="col s12">
+  		            <div id="comment-display"></div>
+  		        </div>
+  		    </div>
+  		</div>
 
-		 <div class="row">
-	        <div class="col s12">
-	          <div class="comment-inputs">
-	              <input type="text" class="" id="comment-input" placeholder="Leave a comment">
-	              <span class="">
-	                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Comment</button>
-	              </span>
-	          </div><!-- /input-group -->
-	        </div>
-      </div>
-	</div>
+  		 <div class="row">
+  	        <div class="col s12">
+  	          <div class="comment-inputs">
+  	              <input type="text" class="" id="comment-input" placeholder="Leave a comment">
+  	              <span class="">
+  	                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Comment</button>
+  	              </span>
+  	          </div><!-- /input-group -->
+  	        </div>
+        </div>
+  	</div>
+  </div>
 
-    <!-- Footer and comment input -->
-    <footer class="hide">
-    	<div class="container"></div>
-  	</footer>
-  
+  <!-- Footer and comment input -->
+  <footer>
+  	 <div class="container">
+        <div id="copywritediv">
+        © 2016 <img src="assets/images/plydt-logo-white.png" width="60px" id="footerimg"> Team
+        </div>
+     </div>
+	</footer>
+
   	<!-- Firebase Reference -->
   	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 
