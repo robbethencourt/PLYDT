@@ -257,6 +257,30 @@ function fbLocationComments(location_to_pass) {
 
 } // end fbLocationComments()
 
+function fbPlydtrs(location_to_pass) {
+
+	// empty the plydtrs ul
+	$('#plydtrs').empty();
+
+	var usersRef = new Firebase('https://plydt.firebaseio.com/users');
+
+	// updating comments to the screen
+	usersRef.orderByChild('location').on('child_added', function(childSnapshot, prevChildKey) {
+
+		// grab the objects from firebase
+		var users_to_add = childSnapshot.val();
+
+		if (users_to_add.location === location_name) {
+
+			console.log(childSnapshot.key());
+		}
+
+		console.log(users_to_add);
+
+	});
+	
+} // end fbPlydtrs()
+
 // Google maps functions needs to live outside the jQuery document ready function as it was causing a delay on the initMap() and having it not available when google maps was ready for it
 
 // map variables
@@ -562,6 +586,9 @@ function addMarker(place) {
 
     		// call the fbLocationComments function so that comments for that location are pulled
     		fbLocationComments(location_name);
+
+    		// call the fbPlydtrs function so that only the plydtrs for that location show up
+    		fbPlydtrs(location_name);
     	
     	}); // end service
 
