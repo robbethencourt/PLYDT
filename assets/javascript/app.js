@@ -286,6 +286,41 @@ function fbPlydtrs(location_to_pass) {
 		} // end if
 
 	}); // end userRef for getting user data from firebase
+
+	// setTimeout function so the other scripts have time to get the users in, particularly on that first click
+	setTimeout(function () {
+
+		// get the amount of plydtrs at this location and store in variable
+		var plydtrs_length = $('#plydtrs li').length;
+
+		// get the element we will set this text to
+		var num_plydtrs = $('#num-plydtrs');
+
+		// if there are no plydtrs at this location
+		if (plydtrs_length === 0) {
+
+			// display the below text to the screen
+			num_plydtrs.text('Sorry, no plydtrs at this location, but you can pin and be one for others to find');
+
+		} // end if
+
+		// if there is one other plydtrs at this location
+		if (plydtrs_length === 1) {
+
+			// display the below text to the screen
+			num_plydtrs.text('Hooray, there is ' + plydtrs_length + ' other plydtr here');
+
+		} // end if
+
+		// if there is more than one plydtr at this location
+		if (plydtrs_length > 1) {
+
+			// display the below text to the screen
+			num_plydtrs.text('Hooray, there are ' + plydtrs_length + ' other plydtrs here');
+
+		} // end if
+	
+	}, 100); // end setTimeout
 	
 } // end fbPlydtrs()
 
