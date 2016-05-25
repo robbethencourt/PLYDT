@@ -96,6 +96,12 @@ input[type="text"]:valid {
 	.pin-button{
 		margin: 20px 0;
 	}
+
+	.pin-me-text {
+		margin-left: 10px;
+		color: #26a69a;
+	}
+
 	#venue-modal h5 {
 		font-family: 'Lobster', cursive;
 	}
@@ -130,7 +136,7 @@ input[type="text"]:valid {
 
 	.comment-inputs input[type="text"]:focus {
 		border: none;
-		box-shadow: none;
+		box-shadow:  0 16px 28px 0 rgba(0,0,0,0.22),0 25px 55px 0 rgba(0,0,0,0.21);
 		background: #FC9FA3;
 	}
 
@@ -157,6 +163,33 @@ input[type="text"]:valid {
 	.input-group {
 		padding-top: 12px;
 	}
+
+
+	/* comment error */
+	#comment-error {
+		z-index: 5;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background: rgba(255,255,255,.5);
+	}
+
+		.comment-error-content {
+			text-align: center;
+			width: 65%;
+			height: 100%;
+			margin: 0 auto;
+			padding: 10%;
+			color: #fff;
+			background: #ee6e73;
+			box-shadow: 6px 10px 74px #aaa;
+		}
+
+			.comment-error-content h4 {
+				font-family: 'Lobster', cursive;
+			}
 
 /* footer */
 
