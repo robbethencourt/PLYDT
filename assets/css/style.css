@@ -179,6 +179,10 @@ footer {
   background-color: #EE6E73;
 }
 
+	footer .row {
+		margin-bottom: 0;
+	}
+
 #copywritediv{
 	text-align: left;
 	color: white;
