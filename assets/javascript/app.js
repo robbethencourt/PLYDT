@@ -620,6 +620,24 @@ function initMap() {
 		] // end map styles
 
   	}); // end map
+	
+	//preferred list layer
+	var layer = new google.maps.FusionTablesLayer({
+	      query: {
+		      select: '\'Geocodable address\'',
+		      from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM',
+		  },
+	      styles: [{
+	      		where: 'Icon',
+	  			markerOptions: {
+	    			iconName: "purple_stars"
+	  				},       		
+	          	}]
+     });
+
+	//end preferred list layer
+
+  	layer.setMap(map);
 
 	
   	infoWindow = new google.maps.InfoWindow();
