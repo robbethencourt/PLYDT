@@ -225,6 +225,7 @@ $(document).ready(function(){
 		// click event for when comments are addded
 		$('#comment-button').on('click', function() {
 
+			// if there is a user logged in
 			if (name !== '') {
 
 				// get the comment to send
@@ -242,22 +243,23 @@ $(document).ready(function(){
 
 			} else {
 
+				// run the comment error
 				$('#comment-error').removeClass('hide');
 
-			}
-
-			
+			} // end if else
 
 			// empty the comment input
 			$('#comment-input').val('');
 
 		}); // end comment button click event
 
+		// click event for when the comment error pops up
 		$('#comment-error').on('click', function() {
 			
+			// add the class of hide back to the comment error div to remove from screen
 			$(this).addClass('hide');
 
-		});
+		}); // end comment error click event
 
 		// click event to pull up the user form when the pin icon is pressed
 		$('#pb').on('click', function() {
