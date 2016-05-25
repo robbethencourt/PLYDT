@@ -726,7 +726,7 @@ function addMarker(place) {
     	position: place.geometry.location,
     	icon: {
     		// this is where we change the icon image to display on the map
-      		url: 'http://maps.gstatic.com/mapfiles/circle.png',
+      		url: 'http://ancient-tundra-89332.herokuapp.com/assets/images/plydt-map-icon.png', // http://maps.gstatic.com/mapfiles/circle.png
       		anchor: new google.maps.Point(10, 10),
       		scaledSize: new google.maps.Size(10, 17)
     	} // end icon
