@@ -40,7 +40,7 @@
       <div class="row test">
         <div class="col s12">
           <div class="container">
-            <h4 class="white-text">Hello and welcome plydt!</h4> <p class="white-text">With this app you will be able to connect your child with other children within the same age group in safe locations! To get started, try clicking on a location. It will display the amount of PLYDTers at that location as well as giving you an option to pin yourself.
+            <h4 class="white-text">Welcome to plydt!</h4> <p class="white-text">With this app you will be able to connect your child with other children within the same age group in safe locations! To get started, try clicking on a location. It will display the amount of PLYDTers at that location as well as giving you an option to pin yourself.
             </p>
           </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="row">
           <div class="col 12">
             <div class="pin-button">
-              <a class="btn-floating btn-large waves-effect waves-light" id="pb"><i class="material-icons">room</i></a>
+              <a class="btn-floating btn-large waves-effect waves-light" id="pb"><i class="material-icons">room</i></a> <span class="pin-me-text">pin me</span>
             </div>
             <h5 id="venue-name">Name of Venue</h5>
             <h6 id="num-plydtrs"></h6>
@@ -151,11 +151,19 @@
               <div class="comment-inputs">
                   <input type="text" class="" id="comment-input" placeholder="Leave a comment">
                   <span class="">
-                    <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Comment</button>
+                    <button class="bwaves-effect waves-light btn" id="comment-button" data-target="modal1" type="button">Comment</button>
                   </span>
               </div><!-- /input-group -->
             </div>
         </div>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="comment-error" class="hide">
+    <div class="comment-error-content">
+      <h4>Woops!</h4>
+      <p>You need to be logged in to leave a comment.</p>
     </div>
   </div>
 
