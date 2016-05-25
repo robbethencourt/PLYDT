@@ -329,8 +329,15 @@ function fbPlydtrs(location_to_pass) {
 			// the unix time stored in firebase
 			var time_remaining = users_to_add.time;
 
+			// current time for math purposes
+			var new_date = moment().format('X');
+
+			//takes check in time and subtracts play time. giving minutes left at the check in spot.
+			var answer1 = Math.round((time_remaining - new_date) / 60);
+				console.log("minutes: " + answer1);
+
 			// insert the name of the user to the created li element
-			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + time_remaining + ' minutes remaining');
+			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining');
 
 			// create a children ul that will be nested under the parent li element
 			var children_ul = $('<ul>').addClass('dynamic-ul hide');
@@ -695,6 +702,9 @@ function addMarker(place) {
 
     		// call the fbPlydtrs function so that only the plydtrs for that location show up
     		fbPlydtrs(location_name);
+
+    		//hiding the welcome screen text
+    		$(".introduction").addClass("hide");
     	
     	}); // end service
 

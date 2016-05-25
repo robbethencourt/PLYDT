@@ -35,26 +35,6 @@ input[type="text"]:valid {
     height: 400px;
     background-color: #CCC;
   }
-/* footer */
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-}
-
 
 /* Nav */
 .plydt-logo {
@@ -177,3 +157,41 @@ footer {
 	.input-group {
 		padding-top: 12px;
 	}
+
+/* footer */
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #EE6E73;
+}
+
+#copywritediv{
+	text-align: left;
+	color: white;
+}
+#footerimg{
+	padding: 0px;
+}
+
+/* introduction screen */
+.introduction{
+	background-color: #EE6E73;
+	text-align: center;
+}
+.introduction h4{
+	font-family: 'Lobster', cursive;
+}
