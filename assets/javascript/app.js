@@ -623,19 +623,57 @@ function initMap() {
 	
 	//preferred list layer
 	var layer = new google.maps.FusionTablesLayer({
-	      query: {
-		      select: '\'Geocodable address\'',
-		      from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM',
-		  },
-	      styles: [{
-	      		where: 'Icon',
-	  			markerOptions: {
-	    			iconName: "purple_stars"
-	  				},       		
-	          	}]
-     });
+	    query: {
+		    select: '\'Geocodable address\'',
+		    from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM',
+		},
+	    styles: [{
+	      	where: 'Icon',
+	  		markerOptions: {
+	    		iconName: "purple_stars"
+	  		},       		
+	    }]
+     }); //end preferred list layer
 
-	//end preferred list layer
+	// google maps event listener for the fusion layer
+	google.maps.event.addListener(layer, 'click', function(e) {
+
+	    // we need a set timeout as it takes a bit to return the data from fusion
+		setTimeout(function () {
+
+			// store the html of the div from fusion in a variable
+			var fusion_string = $('.googft-info-window').html();
+
+			// error case so that this doesn't fire if a user clicks the map to scroll around
+			if (fusion_string !== undefined) {
+
+				var front_of_string = fusion_string.slice(23);
+
+				var final_string = front_of_string.substr(0, front_of_string.indexOf('<'));
+
+				location_name = final_string;
+
+	      		// The location name is added to the venue-modal where the name of the location is prominently displayed
+	    		$('#venue-name').text(location_name);
+
+	    		// call the fbLocationComments function so that comments for that location are pulled
+	    		fbLocationComments(location_name);
+
+	    		// call the fbPlydtrs function so that only the plydtrs for that location show up
+	    		fbPlydtrs(location_name);
+
+	    		//hiding the welcome screen text
+	    		$(".introduction").addClass("hide");
+
+	    		// reveal our venue modal to show comments and details of that location in firebase
+    			$('#venue-modal').removeClass('hide');
+
+			} // end if
+
+		}, 500); // end setTimeout
+
+	}); // end event listener for the fusion layer
+	
 
   	layer.setMap(map);
 
@@ -688,7 +726,7 @@ function addMarker(place) {
     	position: place.geometry.location,
     	icon: {
     		// this is where we change the icon image to display on the map
-      		url: 'http://maps.gstatic.com/mapfiles/circle.png',
+      		url: 'http://ancient-tundra-89332.herokuapp.com/assets/images/plydt-map-icon.png', // http://maps.gstatic.com/mapfiles/circle.png
       		anchor: new google.maps.Point(10, 10),
       		scaledSize: new google.maps.Size(10, 17)
     	} // end icon
