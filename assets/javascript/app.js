@@ -614,16 +614,7 @@ function initMap() {
 
   	}); // end map
 
-	var layer = new google.maps.FusionTablesLayer({
-      query: {
-      select: '\'Geocodable address\'',
-      from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM'
-             }
-  	});
-
-  	layer.setMap(map);
-
-
+	
   	infoWindow = new google.maps.InfoWindow();
   	service = new google.maps.places.PlacesService(map);
 
@@ -657,8 +648,8 @@ function callback(results, status) {
   	// loop through the google map search results and display with markers to the map
   	for (var i = 0, result; result = results[i]; i++) {
 
-    	addMarker(result);
-
+    	// 	
+	addMarker(result);
   	} // end for loop
 
 } // end callback()
@@ -712,4 +703,10 @@ function addMarker(place) {
   	
   	}); // end google maps marker event listner
 
-} // end addMarker()
+
+}; // end addMarker()
+
+
+
+
+	

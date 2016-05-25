@@ -34,9 +34,20 @@
 
     <div id="map"></div>
 
+    <!-- Card panel with information for new users -->
+    <div class="introduction">
+      <div class="row">
+        <div class="col s12">
+          <div class="container">
+            <h4 class="white-text">Hello and welcome plydt!</h4> <p class="white-text">With this app you will be able to connect your child with other children within the same age group in safe locations! To get started, try clicking on a location. It will display the amount of PLYDTers at that location as well as giving you an option to pin yourself.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <!-- Div with the initial buttons to be displayed on load -->
-  <div id="user-button-options" class="hide">
+ <!--  <div id="user-button-options" class="hide">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row">
@@ -51,58 +62,58 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Div with the form to be sent to firebase -->
   <div id="user-inputs" class="hide">
   <div class="section no-pad-bot">
     <div class="container">
 
-    	<h4 id="location-pin"></h4>
+      <h4 id="location-pin"></h4>
 
         <form>
-        	<!-- username input -->
+          <!-- username input -->
             <label for="username">Username</label>
             <input placeholder="Jane Doe" id="username" type="text" class="validate">
       
 
-	        <!-- Mom or dad dropdown -->
-	        <label>Mom or Dad?</label>
-	        <select class="browser-default" id="parent-gender">
-	            <option value="" disabled selected></option>
-	            <option value="mom">Mom</option>
-	            <option value="dad">Dad</option>
-	        </select>
+          <!-- Mom or dad dropdown -->
+          <label>Mom or Dad?</label>
+          <select class="browser-default" id="parent-gender">
+              <option value="" disabled selected></option>
+              <option value="mom">Mom</option>
+              <option value="dad">Dad</option>
+          </select>
 
-	        <!-- Children amount dropdown -->
-	        <label>How many children will be plydting?</label>
-	        <select class="browser-default" id="child-count">
-	            <option value="" disabled selected></option>
-	            <option value="1">1</option>
-	            <option value="2">2</option>
-	            <option value="3">3</option>
-	            <option value="4">4</option>
-	            <option value="5">5</option>
-	        </select>
+          <!-- Children amount dropdown -->
+          <label>How many children will be plydting?</label>
+          <select class="browser-default" id="child-count">
+              <option value="" disabled selected></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
 
-	        <div id="child-inputs"></div>
+          <div id="child-inputs"></div>
 
 
-	        <label>How long will you be plydting?</label>
-	        <select class="browser-default" id="time">
-	            <option value="" disabled selected></option>
-	            <option value="30">Half our</option>
-	            <option value="60">One hour</option>
-	            <option value="90">An hour and a half</option>
-	            <option value="120">Two hours</option>
-	            <option value="150">Two hours and a half</option>
-	            <option value="180">Three hours</option>
-	        </select>
+          <label>How long will you be plydting?</label>
+          <select class="browser-default" id="time">
+              <option value="" disabled selected></option>
+              <option value="30">Half our</option>
+              <option value="60">One hour</option>
+              <option value="90">An hour and a half</option>
+              <option value="120">Two hours</option>
+              <option value="150">Two hours and a half</option>
+              <option value="180">Three hours</option>
+          </select>
 
-			<div class="button-space">
-				<!-- Submit button -->
-        		<input class="btn waves-effect waves-light" type="submit" id="create-user" value="Pin Me" name="action">
-			</div>
+      <div class="button-space">
+        <!-- Submit button -->
+            <input class="btn waves-effect waves-light" type="submit" id="create-user" value="Pin Me" name="action">
+      </div>
         </form>
 
         <div id="cancel"><p>x</p></div>
@@ -111,63 +122,69 @@
   </div> <!-- closes the section -->
   </div>
 
-  	<!-- venue modal -->
-	<div id="venue-modal" class="hide">
-		<div class="container">
-		  	<div class="row">
-		  		<div class="col 12">
+    <!-- venue modal -->
+  <div id="venue-modal" class="hide">
+    <div class="container">
+        <div class="row">
+          <div class="col 12">
             <div class="pin-button">
               <a class="btn-floating btn-large waves-effect waves-light" id="pb"><i class="material-icons">room</i></a>
             </div>
-		  			<h5 id="venue-name">Name of Venue</h5>
-		  			<h6 id="num-plydtrs"></h6>
-		  			<ul id="plydtrs"></ul>
-		  		</div>
-		  	</div>
-		
-	  	<!-- comment-display -->
-		<div class="comment-display-container">
-		    <div class="row">
-		        <div class="col s12">
-		            <div id="comment-display"></div>
-		        </div>
-		    </div>
-		</div>
-
-		 <div class="row">
-	        <div class="col s12">
-	          <div class="comment-inputs">
-	              <input type="text" class="" id="comment-input" placeholder="Leave a comment">
-	              <span class="">
-	                <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Comment</button>
-	              </span>
-	          </div><!-- /input-group -->
-	        </div>
+            <h5 id="venue-name">Name of Venue</h5>
+            <h6 id="num-plydtrs"></h6>
+            <ul id="plydtrs"></ul>
+          </div>
+        </div>
+    
+        <!-- comment-display -->
+      <div class="comment-display-container">
+          <div class="row">
+              <div class="col s12">
+                  <div id="comment-display"></div>
+              </div>
+          </div>
       </div>
-	</div>
 
-    <!-- Footer and comment input -->
-    <footer class="hide">
-    	<div class="container"></div>
-  	</footer>
-  
-  	<!-- Firebase Reference -->
-  	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+       <div class="row">
+            <div class="col s12">
+              <div class="comment-inputs">
+                  <input type="text" class="" id="comment-input" placeholder="Leave a comment">
+                  <span class="">
+                    <button class="bwaves-effect waves-light btn" id="comment-button" type="button">Comment</button>
+                  </span>
+              </div><!-- /input-group -->
+            </div>
+        </div>
+    </div>
+  </div>
 
-  	<!-- jQuery cdn -->
-  	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <!-- Footer and comment input -->
+  <footer>
+     <div class="container">
+        <img src="assets/images/plydt-logo-white.png" width="50px" id="footerimg">
+        <div id="copywritediv">
+        © 2016 PLYDT Team
+        </div>
+     </div>
+  </footer>
 
-  	<!-- Materialize Compiled and minified JavaScript -->
-   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <!-- Firebase Reference -->
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+
+    <!-- jQuery cdn -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+    <!-- Materialize Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
     <!-- Link to Moment.js should go here -->
-  	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-  	<!--Google Maps-->
-  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzM9tljgnEnncAeD4MYu_RuGLGW3G7dyE&libraries=places&callback=initMap" async defer></script>
+    <!--Google Maps-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzM9tljgnEnncAeD4MYu_RuGLGW3G7dyE&libraries=places&callback=initMap" async defer></script>
 
-  	<!-- our scripts -->
-  	<script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- our scripts -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 
 </body>
 </html>
