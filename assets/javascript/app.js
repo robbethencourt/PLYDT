@@ -490,14 +490,24 @@ function initMap() {
 
   	}); // end map
 
+	//PLYDT preferred list
 	var layer = new google.maps.FusionTablesLayer({
       query: {
-      select: '\'Geocodable address\'',
-      from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM'
-             }
-  	});
+	      select: '\'Geocodable address\'',
+	      from: '1Ms2J2lLiBP-qUBzMR9Rw16vL-WRWBQvTNbwaWVzM',
+	  },
+      styles: [{
+      		where: 'Icon',
+  			markerOptions: {
+    			iconName: "purple_stars"
+  				},       		
+          	}]
+     });
 
   	layer.setMap(map);
+
+  	//End preferred layer
+
 
 
   	infoWindow = new google.maps.InfoWindow();
