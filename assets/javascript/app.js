@@ -630,7 +630,7 @@ function initMap() {
 	    styles: [{
 	      	where: 'Icon',
 	  		markerOptions: {
-	    		iconName: "purple_stars"
+	    		iconName: "sunny"
 	  		},       		
 	    }]
      }); //end preferred list layer
