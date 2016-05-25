@@ -177,3 +177,8 @@ footer {
 	.input-group {
 		padding-top: 12px;
 	}
+
+	/* login button */
+	#loginbutton{
+		background-color: #ee6e73;
+	}
