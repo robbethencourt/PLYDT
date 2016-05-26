@@ -5,8 +5,10 @@ $(document).ready(function(){
 
 	// function find location(){
 	// 	//
-	// }
-
+	// 
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+          
 
 	function plydt() {
 
@@ -163,6 +165,9 @@ $(document).ready(function(){
 			// display the user-inputs form
 			$('#user-inputs').removeClass('hide');
 
+			// hides the login button
+			$('#loginbutton').addClass('hide');
+
 			// hide the current button and the search button
 			$(this).addClass('hide');
 			$('#search').addClass('hide');
@@ -262,6 +267,9 @@ $(document).ready(function(){
 
 			// show the pin button again
 			$('.pin-button').removeClass('hide');
+
+			// shows the login button
+			$('#loginbutton').removeClass('hide');
 
 			// remove the dynamically created select and input for the added children
 			$('.child-gender').remove();
