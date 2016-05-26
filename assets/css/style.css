@@ -200,3 +200,8 @@ footer {
 #loginbutton{
     background-color: #ee6e73;
 }
+
+/* introduction modal */
+.lobsterfont{
+	font-family: 'Lobster', cursive;
+}
