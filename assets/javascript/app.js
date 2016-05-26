@@ -165,9 +165,6 @@ $(document).ready(function(){
 			// display the user-inputs form
 			$('#user-inputs').removeClass('hide');
 
-			// hides the login button
-			$('#loginbutton').addClass('hide');
-
 			// hide the current button and the search button
 			$(this).addClass('hide');
 			$('#search').addClass('hide');
@@ -256,6 +253,9 @@ $(document).ready(function(){
 			$('.pin-button').addClass('hide');
 
 			$('#location-pin').text(location_name);
+
+			// hides the login button
+			$('#loginbutton').addClass('hide');
 
 		}); // end click event on pin icon
 
