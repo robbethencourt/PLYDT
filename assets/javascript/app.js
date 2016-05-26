@@ -208,7 +208,7 @@ $(document).ready(function(){
 		 	 if (error) {
 		    console.log("Login Failed!", error);
 			  } else {
-		    console.log("Authenticated successfully with payload:", authData);
+		    console.log("Authenticated successfully with payload:", testData);
 		 	  }
 			};
 				// dataRef.authWithOAuthPopup("google", authHandler);
