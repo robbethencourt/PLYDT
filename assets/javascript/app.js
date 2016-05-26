@@ -194,7 +194,7 @@ $(document).ready(function(){
 		});
 
 		//Start google auth
-				$('#loginbutton').on('click', function(){
+		$('#loginbutton').on('click', function(){
 			// var ref = new Firebase('https://plydt.firebaseio.com/');
 			// var testData = ref.getAuth();
 			console.log(testData);
@@ -258,7 +258,7 @@ $(document).ready(function(){
 		});
 
 		$('#logout').on('click', function() {
-			ref.unauth();
+			dataRef.unauth();
 		});
 		
 
