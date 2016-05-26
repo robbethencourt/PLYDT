@@ -1,0 +1,25 @@
+
+{
+  "name": "plydt",
+  "version": "1.0.0",
+  "description": "Real-time location based app that allows parents to find play dates for their kids in public spaces",
+  "main": "index.js",
+  "dependencies": {
+    "browser-sync": "^2.12.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbethencourt/PLYDT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbethencourt/PLYDT/issues"
+  },
+  "homepage": "https://github.com/robbethencourt/PLYDT#readme"
+}

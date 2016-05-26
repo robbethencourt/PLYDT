@@ -180,6 +180,22 @@ $(document).ready(function(){
 
 		});
 
+		//Start google auth
+
+
+		$('#loginbutton').on('click', function(){
+			var ref = new Firebase('https://plydt.firebaseio.com/');
+			ref.authWithOAuthRedirect("google", function(error, authData){
+				if(error){
+					console.log("Login Failed!", error);
+				} else{
+					console.log("Authenticated successfully with payload:", authData);
+				}
+				console.log(authData);
+			})
+					
+		});
+
 		// create user button click event if they are searching
 		$('#create-user').on('click', function() {
 
@@ -648,7 +664,7 @@ function initMap() {
 	    styles: [{
 	      	where: 'Icon',
 	  		markerOptions: {
-	    		iconName: "purple_stars"
+	    		iconName: "sunny"
 	  		},       		
 	    }]
      }); //end preferred list layer
