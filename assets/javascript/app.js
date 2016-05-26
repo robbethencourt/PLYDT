@@ -183,9 +183,7 @@ $(document).ready(function(){
 		});
 
 		//Start google auth
-
-
-		$('#loginbutton').on('click', function(){
+				$('#loginbutton').on('click', function(){
 			// var ref = new Firebase('https://plydt.firebaseio.com/');
 			// var testData = ref.getAuth();
 			console.log(testData);
@@ -202,6 +200,8 @@ $(document).ready(function(){
 				// }
 			});
 			console.log(testData);
+			console.log(testData.google.displayName)
+			console.log(testData.google.profileImageURL)
 
 			// Create a callback to handle the result of the authentication
 			function authHandler(error, authData) {
@@ -230,13 +230,12 @@ $(document).ready(function(){
 			function getName(authData) {
 				  switch(authData.provider) {
 				     case 'google':
-				       return authData.facebook.displayName;
+				       return authData.google.displayName;
 				  }
 				  console.log(this);
 				}
 
 		});
-
 		
 
 
