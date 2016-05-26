@@ -22,6 +22,8 @@ $(document).ready(function(){
 		var timestamp = null;
 		var chatroom_name = '';
 		var child = {};
+		var testData = dataRef.getAuth();
+
 
 		// variable for chatroom comments
 		var comment = '';
@@ -184,17 +186,59 @@ $(document).ready(function(){
 
 
 		$('#loginbutton').on('click', function(){
-			var ref = new Firebase('https://plydt.firebaseio.com/');
-			ref.authWithOAuthRedirect("google", function(error, authData){
-				if(error){
-					console.log("Login Failed!", error);
-				} else{
-					console.log("Authenticated successfully with payload:", authData);
+			// var ref = new Firebase('https://plydt.firebaseio.com/');
+			// var testData = ref.getAuth();
+			console.log(testData);
+
+			dataRef.authWithOAuthRedirect("google", function(error, authData){
+				if (error) {
+				    console.log("Login Failed!", error);
+				  } else {
+				    console.log("Authenticated successfully with payload:", authData);
+				  }
+				// {
+				//   remember: "sessionOnly",
+				//   scope: "email"
+				// }
+			});
+			console.log(testData);
+
+			// Create a callback to handle the result of the authentication
+			function authHandler(error, authData) {
+		 	 if (error) {
+		    console.log("Login Failed!", error);
+			  } else {
+		    console.log("Authenticated successfully with payload:", authData);
+		 	  }
+			};
+				// dataRef.authWithOAuthPopup("google", authHandler);
+				dataRef.authWithOAuthRedirect("google", authHandler);
+
+			var isNewUser = true;
+
+			dataRef.onAuth(function(authData) {
+			  if (authData && isNewUser) {
+			    // save the user's profile into the database so we can list users,
+			    // use them in Security and Firebase Rules, and show profiles
+			    dataRef.child("users").child(authData.uid).set({
+			      provider: authData.provider,
+			      name: getName(authData)
+			    });
+			  }
+			});
+
+			function getName(authData) {
+				  switch(authData.provider) {
+				     case 'google':
+				       return authData.facebook.displayName;
+				  }
+				  console.log(this);
 				}
-				console.log(authData);
-			})
-					
+
 		});
+
+		
+
 
 		// create user button click event if they are searching
 		$('#create-user').on('click', function() {
