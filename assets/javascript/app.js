@@ -6,6 +6,7 @@ $(document).ready(function(){
 	// function find location(){
 	// 	//
 	// }
+	 $('.modal-trigger').leanModal();
 
 
 	function plydt() {
