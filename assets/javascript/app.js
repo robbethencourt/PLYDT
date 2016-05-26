@@ -3,6 +3,15 @@ var location_name = '';
 // Javascript function that wraps everything
 $(document).ready(function(){
 
+	function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        console.log("Latitude: " + position.coords.latitude);
+        console.log("Longitude: " + position.coords.longitude);
+    } else { 
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
 	// function find location(){
 	// 	//
 	// }
