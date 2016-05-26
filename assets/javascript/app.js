@@ -220,6 +220,9 @@ $(document).ready(function(){
 			// store the image url in the google image variable
 			google_image = testData.google.profileImageURL;
 
+			// add the google name to the pin username input
+			$('#username').val() = name;
+
 			// Create a callback to handle the result of the authentication
 			function authHandler(error, authData) {
 		 	 if (error) {
