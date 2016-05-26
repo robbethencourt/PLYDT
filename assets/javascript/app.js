@@ -285,23 +285,41 @@ $(document).ready(function(){
 		// click event for when comments are addded
 		$('#comment-button').on('click', function() {
 
-			// get the comment to send
-			var comment_to_send = $('#comment-input').val().trim();
+			// if there is a user logged in
+			if (name !== '') {
 
-			// reference the child comments in firebase
-			var comments_ref = dataRef.child('comments/' + location_name);
+				// get the comment to send
+				var comment_to_send = $('#comment-input').val().trim();
 
-			// push the comments to firebase with the local name variable assigned
-			comments_ref.push({
-				name: name,
-				comment: comment_to_send
+				// reference the child comments in firebase
+				var comments_ref = dataRef.child('comments/' + location_name);
+
+				// push the comments to firebase with the local name variable assigned
+				comments_ref.push({
+					name: name,
+					comment: comment_to_send
 				
-			}); // end data push
+				}); // end data push
+
+			} else {
+
+				// run the comment error
+				$('#comment-error').removeClass('hide');
+
+			} // end if else
 
 			// empty the comment input
 			$('#comment-input').val('');
 
 		}); // end comment button click event
+
+		// click event for when the comment error pops up
+		$('#comment-error').on('click', function() {
+			
+			// add the class of hide back to the comment error div to remove from screen
+			$(this).addClass('hide');
+
+		}); // end comment error click event
 
 		// click event to pull up the user form when the pin icon is pressed
 		$('#pb').on('click', function() {
@@ -707,10 +725,13 @@ function initMap() {
 			// error case so that this doesn't fire if a user clicks the map to scroll around
 			if (fusion_string !== undefined) {
 
+				// take off the first part of the string as it's always the same character length
 				var front_of_string = fusion_string.slice(23);
 
+				// take off the rest of the string beginning on the first <
 				var final_string = front_of_string.substr(0, front_of_string.indexOf('<'));
 
+				// se the location name variable to the name of the location
 				location_name = final_string;
 
 	      		// The location name is added to the venue-modal where the name of the location is prominently displayed
@@ -831,8 +852,3 @@ function addMarker(place) {
 
 
 }; // end addMarker()
-
-
-
-
-	
