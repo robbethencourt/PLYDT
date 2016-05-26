@@ -24,6 +24,7 @@ $(document).ready(function(){
 
 		// variables
 		var name = '';
+		var google_image = null;
 		var parent_gender = '';
 		var child_gender = [];
 		var child_age = [];
@@ -93,6 +94,7 @@ $(document).ready(function(){
 			// all these values need to be pulled from the form
 			var user = {
 				username: name_to_pass,
+				googleImage: google_image,
 				parent_gender: parent_gender_to_pass,
 				children: children,
 				location: location_name,
@@ -212,6 +214,12 @@ $(document).ready(function(){
 			console.log(testData.google.displayName)
 			console.log(testData.google.profileImageURL)
 
+			// store the name from Google in the name variable
+			name = testData.google.displayName;
+
+			// store the image url in the google image variable
+			google_image = testData.google.profileImageURL;
+
 			// Create a callback to handle the result of the authentication
 			function authHandler(error, authData) {
 		 	 if (error) {
@@ -251,8 +259,13 @@ $(document).ready(function(){
 		// create user button click event if they are searching
 		$('#create-user').on('click', function() {
 
-			// set the name variable to what the user entered
-			name = $('#username').val().trim();
+			// if there is no name already stored in the name variable. This checks to make sure someone hasn't already logged in.
+			if (name === '') {
+
+				// set the name variable to what the user entered
+				name = $('#username').val().trim();
+
+			} // end if
 
 			// set the parent gender
 			parent_gender = $('#parent-gender').val();
@@ -423,7 +436,7 @@ function fbPlydtrs(location_to_pass) {
 				console.log("minutes: " + answer1);
 
 			// insert the name of the user to the created li element
-			parent_li.html('<span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining');
+			parent_li.html('<img src="' + google_image + '" alt="users google image" /><span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining');
 
 			// create a children ul that will be nested under the parent li element
 			var children_ul = $('<ul>').addClass('dynamic-ul hide');
