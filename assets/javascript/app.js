@@ -4,21 +4,10 @@ var google_image = localStorage.getItem('user_image_url');
 // Javascript function that wraps everything
 $(document).ready(function(){
 
-	function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-        console.log("Latitude: " + position.coords.latitude);
-        console.log("Longitude: " + position.coords.longitude);
-    } else { 
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
+	
 	// function find location(){
 	// 	//
 	// }
-	 $('.modal-trigger').leanModal();
-	 $('#modal2').openModal();
-
 
 	function plydt() {
 
@@ -37,6 +26,10 @@ $(document).ready(function(){
 		var child = {};
 		var testData = dataRef.getAuth();
 
+		// variable for chatroom comments
+		var comment = '';
+
+		// if there are items stored in the name key for local storage
 		if (localStorage.getItem('name') !== null) {
 
 			// get the local storage for name
@@ -45,25 +38,25 @@ $(document).ready(function(){
 			// get the local storage for the image url
 			google_image = localStorage.getItem('user_image_url');
 
+			// hid the login button
 			$('#loginbutton').addClass('hide');
 
-		}
+			// disable the username input when it autopopulates with their name
+			$('#username').prop('disable', true);
 
-		console.log(localStorage.getItem('name'));
+		} else {
+
+			// trigger the welcom message as it's probably the first time the user is at the site
+			$('.modal-trigger').leanModal();
+	 		$('#modal2').openModal();
+
+		} // end if else
 
 		// set the username at top of nav
 		$('#name-nav').text(name);
 
-		
-
 		// add the google name to the pin username input
 		$('#username').val(name);
-
-		console.log(name, google_image);
-
-
-		// variable for chatroom comments
-		var comment = '';
 
 
 		// functions
@@ -557,6 +550,30 @@ function fbPlydtrs(location_to_pass) {
 var map;
 var infoWindow;
 var service;
+
+var latitude = 28.744563499999998;
+var longitude = -81.30536049999999;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+        //console.log("Latitude: " + position.coords.latitude);
+        //console.log("Longitude: " + position.coords.longitude);
+    } else { 
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+function success() {
+	console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+}
+
+function error() {
+	console.log('nada');
+}
+
+getLocation();
 
 // map functions
 function initMap() {
