@@ -236,4 +236,14 @@ footer {
 /* login button */
 #loginbutton{
     background-color: #ee6e73;
+    +}
+  
+  /* introduction modal */
+  .lobsterfont{
+  	font-family: 'Lobster', cursive;
+  }
+  #modal2{
+  	text-align: center;
+  	background-color: teal;
+ 	color: white;
 }
