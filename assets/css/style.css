@@ -205,3 +205,8 @@ footer {
 .lobsterfont{
 	font-family: 'Lobster', cursive;
 }
+#modal1{
+	text-align: center;
+	background-color: teal;
+	color: white;
+}
