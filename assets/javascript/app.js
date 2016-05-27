@@ -439,8 +439,6 @@ function fbLocationComments(location_to_pass) {
 	// updating comments to the screen
 	commentsRef.child(location_to_pass).on('child_added', function(childSnapshot, prevChildKey) {
 
-		console.log('yes');
-
 		// grab the objects from firebase
 		var comment_to_add = childSnapshot.val();
 
@@ -479,10 +477,20 @@ function fbPlydtrs(location_to_pass) {
 
 			//takes check in time and subtracts play time. giving minutes left at the check in spot.
 			var answer1 = Math.round((time_remaining - new_date) / 60);
-				console.log("minutes: " + answer1);
 
-			// insert the name of the user to the created li element
-			parent_li.html('<img src="' + google_image + '" alt="users google image" /><span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining');
+			// check to see if an image is available and if it is
+			if (users_to_add.googleImage !== undefined) {
+
+				// insert the name of the user to the created li element with their image
+				parent_li.html('<div class="row"><div class="col s3"><img src="' + users_to_add.googleImage + '" alt="users google image" /></div><div class="col s9"><span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining</div></div>');
+
+			// if there is no image available
+			} else {
+
+				// insert the name of the user to the created li element with their image
+				parent_li.html('<div class="row"><div class="col s3"><img src="assets/images/plydt-logo.png" alt="plydt logo" /></div><div class="col s9"><span class="bold fake-link">' + childSnapshot.key() + '</span> has ' + answer1 + ' minutes remaining</div></div>');
+
+			} // end if else
 
 			// create a children ul that will be nested under the parent li element
 			var children_ul = $('<ul>').addClass('dynamic-ul hide');
