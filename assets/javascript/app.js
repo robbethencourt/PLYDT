@@ -40,6 +40,9 @@ $(document).ready(function(){
 		// get the local storage for the image url
 		google_image = localStorage.getItem('user_image_url');
 
+		// add the google name to the pin username input
+		$('#username').val(name);
+
 		console.log(name, google_image);
 
 
