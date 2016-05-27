@@ -16,6 +16,7 @@ $(document).ready(function(){
 	// 	//
 	// }
 	 $('.modal-trigger').leanModal();
+	 $('#modal1').openModal();
 
 
 	function plydt() {
@@ -376,6 +377,9 @@ $(document).ready(function(){
 
 			$('#location-pin').text(location_name);
 
+			// hides the login button
+			$('#loginbutton').addClass('hide');
+
 		}); // end click event on pin icon
 
 		// click event to remove the user input form by pressing the x at the top right of the screen
@@ -386,6 +390,10 @@ $(document).ready(function(){
 
 			// show the pin button again
 			$('.pin-button').removeClass('hide');
+
+			// shows the login button
+ 			$('#loginbutton').removeClass('hide');
+ 
 
 			// remove the dynamically created select and input for the added children
 			$('.child-gender').remove();
