@@ -91,8 +91,10 @@ $(document).ready(function(){
 
 		function createUser(name_to_pass, parent_gender_to_pass, child_gender_array, child_age_array, time_to_pass) {
 
+			console.log(name_to_pass);
+
 			// add the username to the nav section
-			//$('#name-nav').text(name);
+			$('#name-nav').text(name_to_pass);
 
 			// create a children array to hold each of the child object the for loop below creates
 			var children = [];
@@ -293,7 +295,7 @@ $(document).ready(function(){
 		$('#create-user').on('click', function() {
 
 			// if there is no name already stored in the name variable. This checks to make sure someone hasn't already logged in.
-			if (name === '') {
+			if (name === null) {
 
 				// set the name variable to what the user entered
 				name = $('#username').val().trim();
@@ -437,6 +439,8 @@ function fbLocationComments(location_to_pass) {
 	// updating comments to the screen
 	commentsRef.child(location_to_pass).on('child_added', function(childSnapshot, prevChildKey) {
 
+		console.log('yes');
+
 		// grab the objects from firebase
 		var comment_to_add = childSnapshot.val();
 
@@ -573,13 +577,6 @@ function getLocation() {
 
 } // end getLocation()
 
-// error function that was passed in getLocation above
-function error() {
-
-	console.log('nada');
-
-} // end error()
-
 // success function that was passed in getLocation above and is being passed the position we get from geolocation
 function success(position) {
 
@@ -591,9 +588,17 @@ function success(position) {
 	longitude = position.coords.longitude;
     console.log("Longitude: " + position.coords.longitude);
 
+} // end success()
 
+// error function that was passed in getLocation above
+function error() {
 
+	console.log('nada');
 
+} // end error()
+
+// call the getLocatoin function so this works on page load
+getLocation();
 
 // map functions
 function initMap() {
@@ -959,8 +964,3 @@ function addMarker(place) {
 
 
 }; // end addMarker()
-
-} // end success()
-
-// call the getLocatoin function so this works on page load
-getLocation();
