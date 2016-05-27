@@ -210,6 +210,7 @@ footer {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #EE6E73;
+  text-align: center;
 }
 
 	footer .row {
