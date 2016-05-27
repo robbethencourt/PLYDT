@@ -346,8 +346,10 @@ $(document).ready(function(){
 		// click event for when comments are addded
 		$('#comment-button').on('click', function() {
 
+			console.log(name);
+
 			// if there is a user logged in
-			if (name !== '') {
+			if (name !== null) {
 
 				// get the comment to send
 				var comment_to_send = $('#comment-input').val().trim();
@@ -460,12 +462,8 @@ function fbPlydtrs(location_to_pass) {
 	// grab the users section of firebase
 	var usersRef = new Firebase('https://plydt.firebaseio.com/users');
 
-	console.log(usersRef);
-
 	// updating comments to the screen
 	usersRef.orderByChild('location').on('child_added', function(childSnapshot, prevChildKey) {
-
-		console.log(location_name);
 
 		// grab the objects from firebase
 		var users_to_add = childSnapshot.val();
