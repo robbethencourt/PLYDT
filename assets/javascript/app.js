@@ -1,4 +1,5 @@
 var location_name = '';
+var google_image = '';
 
 // Javascript function that wraps everything
 $(document).ready(function(){
@@ -22,11 +23,11 @@ $(document).ready(function(){
 	function plydt() {
 
 		// drop the firebase onto the dataRef variable to use throughout my js
-		var dataRef = new Firebase('https://plydt.firebaseio.com/');
+		var dataRef = new Firebase('https://plydt2.firebaseio.com/');
 
 		// variables
 		var name = '';
-		var google_image = null;
+		
 		var parent_gender = '';
 		var child_gender = [];
 		var child_age = [];
@@ -36,11 +37,17 @@ $(document).ready(function(){
 		var child = {};
 		var testData = dataRef.getAuth();
 
-		// get the local storage for name
-		name = localStorage.getItem('name');
+		if (localStorage.getItem('name' !== null)) {
 
-		// get the local storage for the image url
-		google_image = localStorage.getItem('user_image_url');
+			// get the local storage for name
+			name = localStorage.getItem('name');
+
+			// get the local storage for the image url
+			google_image = localStorage.getItem('user_image_url');
+
+		}
+
+		
 
 		// add the google name to the pin username input
 		$('#username').val(name);
@@ -132,7 +139,7 @@ $(document).ready(function(){
 
 		// remove user data at certain time
 		// grab the users section of firebase
-		var usersDeleteRef = new Firebase('https://plydt.firebaseio.com/users');
+		var usersDeleteRef = new Firebase('https://plydt2.firebaseio.com/users');
 
 		// updating the user info based on the time stored for each user
 		usersDeleteRef.orderByChild('time').on('child_added', function(childSnapshot, prevChildKey) {
@@ -208,7 +215,7 @@ $(document).ready(function(){
 
 		//Start google auth
 		$('#loginbutton').on('click', function(){
-			// var ref = new Firebase('https://plydt.firebaseio.com/');
+			// var ref = new Firebase('https://plydt2.firebaseio.com/');
 			// var testData = ref.getAuth();
 			console.log(testData);
 
@@ -423,7 +430,7 @@ function fbLocationComments(location_to_pass) {
 	$('#comment-display').empty();
 	
 	// grabbed the comments section of firebase to use below in the section where I'll be adding comments to the screen
-	var commentsRef = new Firebase('https://plydt.firebaseio.com/comments');
+	var commentsRef = new Firebase('https://plydt2.firebaseio.com/comments');
 
 	// updating comments to the screen
 	commentsRef.child(location_to_pass).on('child_added', function(childSnapshot, prevChildKey) {
@@ -444,10 +451,14 @@ function fbPlydtrs(location_to_pass) {
 	$('#plydtrs').empty();
 
 	// grab the users section of firebase
-	var usersRef = new Firebase('https://plydt.firebaseio.com/users');
+	var usersRef = new Firebase('https://plydt2.firebaseio.com/users');
+
+	console.log(usersRef);
 
 	// updating comments to the screen
 	usersRef.orderByChild('location').on('child_added', function(childSnapshot, prevChildKey) {
+
+		console.log(location_name);
 
 		// grab the objects from firebase
 		var users_to_add = childSnapshot.val();
