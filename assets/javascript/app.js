@@ -16,7 +16,7 @@ $(document).ready(function(){
 	// 	//
 	// }
 	 $('.modal-trigger').leanModal();
-	 $('#modal1').openModal();
+	 $('#modal2').openModal();
 
 
 	function plydt() {
