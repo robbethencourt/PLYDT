@@ -435,7 +435,7 @@ $(document).ready(function(){
 				}
 
 		});
-		
+		//end google oauth
 
 
 // firebase events
