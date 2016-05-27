@@ -37,7 +37,7 @@ $(document).ready(function(){
 		var child = {};
 		var testData = dataRef.getAuth();
 
-		if (localStorage.getItem('name' !== null)) {
+		if (localStorage.getItem('name') !== null) {
 
 			// get the local storage for name
 			name = localStorage.getItem('name');
