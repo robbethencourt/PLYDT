@@ -551,29 +551,49 @@ var map;
 var infoWindow;
 var service;
 
+// storing the latitude and logitude of our class just in case we run into errors with browsers that no longer support non https browsers...Chrome 50
 var latitude = 28.744563499999998;
 var longitude = -81.30536049999999;
 
+// geolocation function checkint to see if geolocation is supported on user's browser
 function getLocation() {
+
+	// if geolocation works
     if (navigator.geolocation) {
+
+    	// pass the success or error function
         navigator.geolocation.getCurrentPosition(success, error);
-        //console.log("Latitude: " + position.coords.latitude);
-        //console.log("Longitude: " + position.coords.longitude);
+
+    // if geolocation doesn't work
     } else { 
+
         console.log("Geolocation is not supported by this browser.");
-    }
-}
+    
+    } // end if else
 
-function success(position) {
-	console.log("Latitude: " + position.coords.latitude);
-    console.log("Longitude: " + position.coords.longitude);
-}
+} // end getLocation()
 
+// error function that was passed in getLocation above
 function error() {
-	console.log('nada');
-}
 
-getLocation();
+	console.log('nada');
+
+} // end error()
+
+// success function that was passed in getLocation above and is being passed the position we get from geolocation
+function success(position) {
+
+	// store the latitude coordinate in the latitude variable
+	latitude = position.coords.latitude;
+	console.log("Latitude: " + position.coords.latitude);
+
+	// store the lognitude coordinates in the longitute variable
+	longitude = position.coords.longitude;
+    console.log("Longitude: " + position.coords.longitude);
+
+
+
+
 
 // map functions
 function initMap() {
@@ -582,7 +602,7 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 
 		// this is where to store the coordinates
-		center: {lat: 28.744563499999998, lng: -81.30536049999999},
+		center: {lat: latitude, lng: longitude},
 		// deals wtih the area the map displays
  		zoom: 13,
  		// map speicific styles
@@ -939,3 +959,8 @@ function addMarker(place) {
 
 
 }; // end addMarker()
+
+} // end success()
+
+// call the getLocatoin function so this works on page load
+getLocation();
