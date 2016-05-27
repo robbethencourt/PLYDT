@@ -47,6 +47,8 @@ $(document).ready(function(){
 
 		}
 
+		console.log(localStorage.getItem('name'));
+
 		
 
 		// add the google name to the pin username input
