@@ -243,6 +243,7 @@ footer {
 }
 .introduction h4{
 	font-family: 'Lobster', cursive;
+	text-align: center;
 }
   
   /* introduction modal */
@@ -254,4 +255,7 @@ footer {
   	text-align: center;
   	background-color: teal;
  	color: white;
+}
+h6{
+	font-size: 18px;
 }
