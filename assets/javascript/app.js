@@ -2,10 +2,16 @@ var location_name = '';
 
 // Javascript function that wraps everything
 $(document).ready(function(){
-
-	// function find location(){
-	// 	//
-	// 
+	
+	function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        console.log("Latitude: " + position.coords.latitude);
+        console.log("Longitude: " + position.coords.longitude);
+    } else { 
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
     $('#modal1').openModal();
