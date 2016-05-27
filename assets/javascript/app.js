@@ -1,5 +1,5 @@
 var location_name = '';
-var google_image = '';
+var google_image = localStorage.getItem('user_image_url');
 
 // Javascript function that wraps everything
 $(document).ready(function(){
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		var dataRef = new Firebase('https://plydt.firebaseio.com/');
 
 		// variables
-		var name = '';
+		var name = localStorage.getItem('name');
 		
 		var parent_gender = '';
 		var child_gender = [];
