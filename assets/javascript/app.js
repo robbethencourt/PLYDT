@@ -223,19 +223,19 @@ $(document).ready(function(){
 			console.log(testData.google.profileImageURL)
 
 			// set local store on name
-			//localStorage.setItem('name', testData.google.displayName);
+			localStorage.setItem('name', testData.google.displayName);
 
 			// set local storage on user imagae url
-			//localStorage.setItem('user_image_url', testData.google.profileImageURL);
+			localStorage.setItem('user_image_url', testData.google.profileImageURL);
 
 			// store the name from Google in the name variable
-			name = testData.google.displayName;
+			//name = testData.google.displayName;
 
 			// store the image url in the google image variable
-			google_image = testData.google.profileImageURL;
+			//google_image = testData.google.profileImageURL;
 
 			// add the google name to the pin username input
-			$('#username').val() = name;
+			$('#username').val(name);
 
 			// Create a callback to handle the result of the authentication
 			function authHandler(error, authData) {
