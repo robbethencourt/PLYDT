@@ -11,7 +11,7 @@ $(document).ready(function(){
 	function plydt() {
 
 		// drop the firebase onto the dataRef variable to use throughout my js
-		var dataRef = new Firebase('https://plydt.firebaseio.com/');
+		//var dataRef = new Firebase('https://plydt.firebaseio.com/');
 
 		// variables
 		var name = '';
@@ -22,7 +22,7 @@ $(document).ready(function(){
 		var timestamp = null;
 		var chatroom_name = '';
 		var child = {};
-		var testData = dataRef.getAuth();
+		//var authData = dataRef.getAuth();
 
 
 		// variable for chatroom comments
@@ -182,60 +182,70 @@ $(document).ready(function(){
 
 		});
 
-		//Start google auth
-				$('#loginbutton').on('click', function(){
-			// var ref = new Firebase('https://plydt.firebaseio.com/');
-			// var testData = ref.getAuth();
-			console.log(testData);
+		// //Start google auth
+		// $('#loginbutton').on('click', function(){
+		// 	var ref = new Firebase("https://plydt.firebaseio.com");	
+		// 	var authData = ref.getAuth();
 
-			dataRef.authWithOAuthRedirect("google", function(error, authData){
-				if (error) {
-				    console.log("Login Failed!", error);
-				  } else {
-				    console.log("Authenticated successfully with payload:", authData);
-				  }
-				// {
-				//   remember: "sessionOnly",
-				//   scope: "email"
-				// }
-			});
-			console.log(testData);
-			console.log(testData.google.displayName)
-			console.log(testData.google.profileImageURL)
+		// 	console.log('test authData', authData);
 
-			// Create a callback to handle the result of the authentication
-			function authHandler(error, authData) {
-		 	 if (error) {
-		    console.log("Login Failed!", error);
-			  } else {
-		    console.log("Authenticated successfully with payload:", testData);
-		 	  }
-			};
-				// dataRef.authWithOAuthPopup("google", authHandler);
-				dataRef.authWithOAuthRedirect("google", authHandler);
+		// 	ref.authWithOAuthRedirect("google", function(error, authData){
+		// 		if (error) {
+		// 		    console.log("Login Failed!", error);
+		// 		  } else {
+		// 		    console.log("Authenticated successfully with payload:", authData);
+		// 		  }
+		// 	});
 
-			var isNewUser = true;
+		// 	console.log(authData);
+		// 	console.log(authData.google.displayName)
+		// 	console.log(authData.google.profileImageURL)
 
-			dataRef.onAuth(function(authData) {
-			  if (authData && isNewUser) {
-			    // save the user's profile into the database so we can list users,
-			    // use them in Security and Firebase Rules, and show profiles
-			    dataRef.child("users").child(authData.uid).set({
-			      provider: authData.provider,
-			      name: getName(authData)
-			    });
-			  }
-			});
+		// function authDataCallback(authData) {
+		// 	  if (authData) {
+		// 	    console.log("User " + authData.uid + " is logged in with " + authData.provider);
+		// 	  } else {
+		// 	    console.log("User is logged out");
+		// 	  }
+		// 	}
+		// 	// Register the callback to be fired every time auth state changes
+		// 	ref.onAuth(authDataCallback);
 
-			function getName(authData) {
-				  switch(authData.provider) {
-				     case 'google':
-				       return authData.google.displayName;
-				  }
-				  console.log(this);
-				}
 
-		});
+		// 	// Create a callback to handle the result of the authentication
+		// 	function authHandler(error, authData) {
+		//  	 if (error) {
+		//     console.log("Login Failed!", error);
+		// 	  } else {
+		//     console.log("Authenticated successfully with payload:", authData);
+		//  	  }
+		// 	};
+				
+		// 	ref.authWithOAuthRedirect("google", authHandler);
+
+		// 	//storing user data 
+		// 	var isNewUser = true;
+
+		// 	ref.onAuth(function(authData) {
+		// 	  if (authData && isNewUser) {
+		// 	    // save the user's profile into the database so we can list users,
+		// 	    // use them in Security and Firebase Rules, and show profiles
+		// 	    ref.child("users").child(authData.uid).set({
+		// 	      provider: authData.provider,
+		// 	      name: getName(authData)
+		// 	    });
+		// 	  }
+		// 	});
+
+		// 	function getName(authData) {
+		// 		  switch(authData.provider) {
+		// 		     case 'google':
+		// 		       return authData.google.displayName;
+		// 		  }
+		// 		  console.log(this);
+		// 		}
+
+		// });
 		
 
 
@@ -359,6 +369,74 @@ $(document).ready(function(){
 	plydt();
 
 }); // end jQuery document ready
+
+//Start google auth
+		$('#loginbutton').on('click', function(){
+			var ref = new Firebase("https://plydt.firebaseio.com");	
+			var authData = ref.getAuth();
+
+			console.log('test authData', authData);
+
+			ref.authWithOAuthRedirect("google", function(error, authData){
+				if (error) {
+				    console.log("Login Failed!", error);
+				  } else {
+				    console.log("Authenticated successfully with payload:", authData);
+				  }
+			});
+
+			console.log(authData);
+			console.log(authData.google.displayName)
+			console.log(authData.google.profileImageURL)
+
+		function authDataCallback(authData) {
+			  if (authData) {
+			    console.log("User " + authData.uid + " is logged in with " + authData.provider);
+			  } else {
+			    console.log("User is logged out");
+			  }
+			}
+			// Register the callback to be fired every time auth state changes
+			ref.onAuth(authDataCallback);
+
+
+			// Create a callback to handle the result of the authentication
+			function authHandler(error, authData) {
+		 	 if (error) {
+		    console.log("Login Failed!", error);
+			  } else {
+		    console.log("Authenticated successfully with payload:", authData);
+		 	  }
+			};
+				
+			ref.authWithOAuthRedirect("google", authHandler);
+
+			//storing user data 
+	    var isNewUser = true;
+
+			ref.onAuth(function(authData) {
+			  if (authData && isNewUser) {
+			    // save the user's profile into the database so we can list users,
+			    // use them in Security and Firebase Rules, and show profiles
+			    ref.child("users").child(authData.uid).set({
+			      provider: authData.provider,
+			      name: getName(authData),
+			      image: authData.google.profileImageURL
+			    });
+			  }
+			});
+
+			function getName(authData) {
+				  switch(authData.provider) {
+				     case 'google':
+				       return authData.google.displayName;
+				  }
+				  console.log(this, "VVVVVVVV");
+				}
+
+		});
+		
+
 
 // firebase events
 
