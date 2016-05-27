@@ -40,6 +40,8 @@ $(document).ready(function(){
 		// get the local storage for the image url
 		google_image = localStorage.getItem('user_image_url');
 
+		console.log(name, google_image);
+
 
 		// variable for chatroom comments
 		var comment = '';
@@ -221,10 +223,10 @@ $(document).ready(function(){
 			console.log(testData.google.profileImageURL)
 
 			// set local store on name
-			localStorage.setItem('name', testData.google.displayName);
+			//localStorage.setItem('name', testData.google.displayName);
 
 			// set local storage on user imagae url
-			localStorage.setItem('user_image_url', testData.google.profileImageURL);
+			//localStorage.setItem('user_image_url', testData.google.profileImageURL);
 
 			// store the name from Google in the name variable
 			name = testData.google.displayName;
