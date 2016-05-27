@@ -42,7 +42,7 @@ $(document).ready(function(){
 			$('#loginbutton').addClass('hide');
 
 			// disable the username input when it autopopulates with their name
-			$('#username').prop('disable', true);
+			$('#username').prop('disabled', true);
 
 		} else {
 
@@ -564,7 +564,7 @@ function getLocation() {
     }
 }
 
-function success() {
+function success(position) {
 	console.log("Latitude: " + position.coords.latitude);
     console.log("Longitude: " + position.coords.longitude);
 }
