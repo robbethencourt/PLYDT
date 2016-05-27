@@ -121,6 +121,7 @@ input[type="text"]:valid {
 	}
 
 	#comment-display {
+		overflow-y: scroll;
 		height: 150px;
 		padding: 1px 1em;
 		color: #fff;
@@ -243,16 +244,12 @@ footer {
 .introduction h4{
 	font-family: 'Lobster', cursive;
 }
-
-/* login button */
-#loginbutton{
-    background-color: #ee6e73;
-    +}
   
   /* introduction modal */
   .lobsterfont{
   	font-family: 'Lobster', cursive;
   }
+  
   #modal2{
   	text-align: center;
   	background-color: teal;
