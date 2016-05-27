@@ -23,7 +23,7 @@ $(document).ready(function(){
 	function plydt() {
 
 		// drop the firebase onto the dataRef variable to use throughout my js
-		var dataRef = new Firebase('https://plydt2.firebaseio.com/');
+		var dataRef = new Firebase('https://plydt.firebaseio.com/');
 
 		// variables
 		var name = '';
@@ -128,7 +128,7 @@ $(document).ready(function(){
 			usersRef = dataRef.child('users/' + name);
 
 			// setting the user section in firebase to the user object we create with the form
-			usersRef.ref().set(user);
+			usersRef.ref().update(user);
 
 			$('#user-inputs').addClass('hide');
 			
@@ -139,7 +139,7 @@ $(document).ready(function(){
 
 		// remove user data at certain time
 		// grab the users section of firebase
-		var usersDeleteRef = new Firebase('https://plydt2.firebaseio.com/users');
+		var usersDeleteRef = new Firebase('https://plydt.firebaseio.com/users');
 
 		// updating the user info based on the time stored for each user
 		usersDeleteRef.orderByChild('time').on('child_added', function(childSnapshot, prevChildKey) {
@@ -215,7 +215,7 @@ $(document).ready(function(){
 
 		//Start google auth
 		$('#loginbutton').on('click', function(){
-			// var ref = new Firebase('https://plydt2.firebaseio.com/');
+			// var ref = new Firebase('https://plydt.firebaseio.com/');
 			// var testData = ref.getAuth();
 			console.log(testData);
 
@@ -430,7 +430,7 @@ function fbLocationComments(location_to_pass) {
 	$('#comment-display').empty();
 	
 	// grabbed the comments section of firebase to use below in the section where I'll be adding comments to the screen
-	var commentsRef = new Firebase('https://plydt2.firebaseio.com/comments');
+	var commentsRef = new Firebase('https://plydt.firebaseio.com/comments');
 
 	// updating comments to the screen
 	commentsRef.child(location_to_pass).on('child_added', function(childSnapshot, prevChildKey) {
@@ -451,7 +451,7 @@ function fbPlydtrs(location_to_pass) {
 	$('#plydtrs').empty();
 
 	// grab the users section of firebase
-	var usersRef = new Firebase('https://plydt2.firebaseio.com/users');
+	var usersRef = new Firebase('https://plydt.firebaseio.com/users');
 
 	console.log(usersRef);
 
