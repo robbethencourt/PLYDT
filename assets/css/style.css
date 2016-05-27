@@ -110,6 +110,16 @@ input[type="text"]:valid {
 		padding: 0 0 15px 10px;
 	}
 
+	#plydtrs img {
+		border-radius: 50%;
+		width: 65px;
+    	margin: 0 10px -30px 0;
+	}	
+
+	#plydtrs li {
+		margin-bottom: 30px;
+	}
+
 	#comment-display {
 		height: 150px;
 		padding: 1px 1em;
